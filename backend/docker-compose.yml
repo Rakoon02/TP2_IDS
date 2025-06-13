@@ -8,4 +8,5 @@ services:
       - POSTGRES_DB=multiversus
     ports:
       - 5432:5432
-
+    volumes:
+      - ./psql_data:/var/lib/postgresql/data
