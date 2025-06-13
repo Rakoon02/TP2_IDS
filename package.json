@@ -4,7 +4,8 @@
   "description": "Pagina Web para TP2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No hay comandos.\""
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -23,3 +24,4 @@
     "express": "^5.1.0"
   }
 }
+
