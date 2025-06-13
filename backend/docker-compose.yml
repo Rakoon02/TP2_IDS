@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:17
+    container_name: database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=multiversus
+    ports:
+      - 5432:5432
+
