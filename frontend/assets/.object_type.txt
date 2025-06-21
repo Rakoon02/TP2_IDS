@@ -103,3 +103,39 @@ bloque que contiene titulos con parrafos debajo de info, separados con una linea
         </div>
 
 
+VOTE BLOCK
+
+bloque para votar entre dos personajes
+
+| titulo     |
+| linea      |
+| titulito 1 |
+| boton 1    |
+| linea      |
+| titulito 2 |
+| boton 2    |
+
+
+<div class="vote_block">
+            <h1>
+                <b>Votar</b>
+            </h1>
+            <br><hr><br>
+            <div class="vote_char_section" id="char_1">
+                <h2>
+                    <b>Personaje 1</b>
+                </h2>
+                <button>
+                    ￩
+                </button>
+            </div>
+            <br><hr><br>
+            <div class="vote_char_section" id="char_2">
+                <h2>
+                    <b>Personaje 2</b>
+                </h2>
+                <button>
+                    ￫
+                </button>
+            </div>
+        </div>
