@@ -1,20 +1,20 @@
-const escpress = require('express');
+const express = require('express');
 const app = express();
-const PORT = process.enc.PORT || 3000;
+const PORT = 3000;
+const pool = require('./base_de_datos')
 
 app.use(express.json());
 
-app.get('/', (req,res) => {
-	res.send('Backend');
-});
-
-app.post('/api/hello', (req,res) => {
-	const user = req.body;
-	res.status(201).json({ message: 'Usuario creado', user});
+app.get('/test-database', async (req,res) => {
+	try{
+    const result = await pool.query('SELECT NOW()');
+    res.json({ success: true, time: result.rows[0].now });
+    } catch (error) {
+    console.error('Error en coneccion', error);
+    res.status(500).json({ success: false, error: error.message});
+    }
 });
 
 app.listen(PORT, () => {
-	console.log('Servidor corriendo en http://localhost:${PORT}');
+	console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
-
