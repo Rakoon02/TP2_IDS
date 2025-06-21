@@ -17,13 +17,6 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--background-color);
 }
-.mid{
-    width: 100%;
-    margin-top: 125px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
 /*TOP BAR*/
 /*#region*/
 .top_bar{
@@ -52,7 +45,7 @@ body{
     align-items: center;
     background-color: var(--object-background-color);
     color: var(--font-color);
-    font-size:x-large;
+    font-size: large;
     text-decoration: none ;
     transition-duration: 0.25s;
 }
@@ -60,7 +53,7 @@ body{
     background-color: var(--object-secondary-background-color);
     color: white;
     cursor: pointer;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 /*#endregion*/
 
@@ -69,7 +62,7 @@ body{
 .info_block{
     height: 100%;
     margin: 1.25%;
-    padding: 2%;
+    padding: 1.25%;
     border-radius: 15px;
     position: static;
     display: block;
@@ -114,28 +107,17 @@ body{
 .img_block hr{
     color: var(--background-color);
 }
-.img_block h4{
-    margin-top: 5px;
-}
-.img_block #first{
-    margin-top: 0px;
-}
-.img_block p{
-    font-size: small;
-    margin-top: 2.5px;
-}
-
 .img_block.small{
-    width: 20%;
+    width: 25%;
 }
 .img_block.medium{
-    width: 45%;
+    width: 50%;
 }
 .img_block.large{
-    width: 70%;
+    width: 75%;
 }
 .img_block.full{
-    width: 90%;
+    width: 95%;
 }
 .img_block .frame{
     width: 100%;
@@ -171,16 +153,3 @@ body{
     transform: scale(1.1);
 }
 /*#endregion*/
-
-/*pag_votar*/
-/*#region*/
-.char_vote_img{
-    width: 100%;
-    height: 100%;
-    display: inherit;
-}
-
-
-
-/*#endregion*/
-
