@@ -172,6 +172,55 @@ body{
 }
 /*#endregion*/
 
+/*VOTE BLOCK*/
+/*#region*/
+.vote_block{
+    width: 12.5%;
+    margin: 1.25%;
+    padding: 1.25%;
+    border-radius: 15px;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--background-secondary-color);
+    color: var(--font-color);
+}
+.vote_block h1{
+    margin-bottom: 10px;
+}
+.vote_char_section{
+    width: 100%;
+    height: 45%;
+    margin: 0;
+    padding: 1%;
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.vote_block button{
+    width: 85%;
+    height: 61.75%;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--background-secondary-color);
+    font-size: xx-large;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+.vote_block button:hover{
+    background-color: var(--background-terciary-color);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+.vote_block button:active{
+    transform: scale(0.9);
+    background-color: rgba(160, 160, 160,0.5);
+    transition-duration: 0s;
+}
+/*#endregion*/
+
 /*pag_votar*/
 /*#region*/
 .char_vote_img{
