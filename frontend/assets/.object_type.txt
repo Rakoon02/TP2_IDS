@@ -1,0 +1,141 @@
+TOP BAR
+
+barra de arriba, sirve para moverse entre paginas
+
+
+| (Pagina Principal) | (Personajes) | (Estadisticas) | (Votar) |
+
+<div class="top_bar">
+            <a href="">
+                <b>1</b>
+            </a>
+            <a href="">
+                <b>2</b>
+            </a>
+            <a href="">
+                <b>3</b>
+            </a>
+            <a href="">
+                <b>4</b>
+</div>
+
+
+IMG BLOCK
+
+bloque que contiene un titulo, una imagen de personaje e informacion debajo, puede incluir mucha o poca info
+
+| titulo |
+| linea  |
+| imagen |
+| linea  |
+| info   |
+
+
+<div class="img_block">                 CAN BE small/medium/large/full
+            <h1>
+                <b>Title</b>
+            </h1>
+            <br><hr><br>
+            <div class="frame">
+                <img src="" alt="">
+            </div>
+            <br><hr><br>
+            <h3>
+                Sub-Title 1
+            </h3>
+            <p>
+                sample text
+            </p>
+            <br>
+            <h3>
+                Sub-Title 2
+            </h3>
+            <p>
+                sample text
+            </p>
+        </div>
+
+
+
+
+
+
+INFO BLOCK
+
+bloque que contiene titulos con parrafos debajo de info, separados con una linea
+
+| titulo1  |
+| parrafo1 |
+| linea    |
+| titulo2  |
+| parrafo2 |
+| linea    |
+...
+
+        <div class="info_block small">      CAN BE small/medium/large/full
+            <h1>
+                <b>Title 1</b>
+            </h1>
+            <p>
+                sample text 
+            </p>
+            <br><hr><br>
+            <h1>
+                <b>Title 2</b>
+            </h1>
+            <p>
+                sample text
+            </p>
+            <br><hr><br>
+            <h1>
+                <b>Title 3</b>
+            </h1>
+            <p>
+                sample text
+            </p>
+            <br><hr><br>
+            <h1>
+                <b>Title 4</b>
+            </h1>
+            <p>
+                sample text
+            </p>
+        </div>
+
+
+VOTE BLOCK
+
+bloque para votar entre dos personajes
+
+| titulo     |
+| linea      |
+| titulito 1 |
+| boton 1    |
+| linea      |
+| titulito 2 |
+| boton 2    |
+
+
+<div class="vote_block">
+            <h1>
+                <b>Votar</b>
+            </h1>
+            <br><hr><br>
+            <div class="vote_char_section" id="char_1">
+                <h2>
+                    <b>Personaje 1</b>
+                </h2>
+                <button>
+                    ￩
+                </button>
+            </div>
+            <br><hr><br>
+            <div class="vote_char_section" id="char_2">
+                <h2>
+                    <b>Personaje 2</b>
+                </h2>
+                <button>
+                    ￫
+                </button>
+            </div>
+        </div>
