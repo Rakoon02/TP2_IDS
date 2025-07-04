@@ -15,6 +15,32 @@ app.get('/test-database', async (req,res) => {
     }
 });
 
+//Get un personaje
+app.get('/api/personajes/:id', async (req, res) => {
+    //res.json({ status: 'OK'})
+});
+
+//Get todos los personajes
+app.get('/api/personajes/', async (req, res) => {
+    //res.json({ status: 'OK'})
+});
+
+//Post un personaje
+app.post('/api/personajes/', async (req, res) => {
+    //res.json({ status: 'OK'})
+});
+
+//Delete un personaje
+app.delete('/api/personajes/:id', async (req, res) => {
+    //res.json({ status: 'OK'})
+});
+
+//Update un personaje
+app.put('/api/personajes/', async (req, res) => {
+    //res.json({ status: 'OK'})
+});
+
+
 app.listen(PORT, () => {
 	console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
