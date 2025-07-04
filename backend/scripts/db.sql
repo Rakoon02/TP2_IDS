@@ -28,7 +28,7 @@ CREATE TABLE lugares (
     id serial primary key,
     nombre varchar(100) NOT NULL UNIQUE,
     descripcion varchar(255) NOT NULL,
-    origen_id int REFERENCES universos(id),
+    universo int REFERENCES universos(id),
     imagen varchar(255)
 );
 
