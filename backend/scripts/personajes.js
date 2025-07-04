@@ -14,6 +14,12 @@ async function getAllPersonajes()
     return result.rows;
 }
 
+async function getPersonajesByOrigen(origen_id)
+{
+    const result = await dbClient.query('SELECT * FROM personajes WHERE origen_id = $1', [origen_id]);
+    return result.rows;
+}
+
 async function getOnePersonaje(id)
 {
     const result = await dbClient.query('SELECT * FROM personajes WHERE id = $1 LIMIT 1', [id]);    

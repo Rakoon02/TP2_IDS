@@ -20,6 +20,12 @@ async function getOneLugar(id)
     return result.rows[0];
 }
 
+async function getLugaresByOrigen(origen_id)
+{
+    const result = await dbClient.query('SELECT * FROM lugares WHERE origen_id = $1', [origen_id]);
+    return result.rows;
+}
+
 async function createLugar(nombre, descripcion, origen_id, imagen)
 {
     const result = await dbClient.query('INSERT INTO personajes (nombre, descripcion, origen_id, imagen) VALUES ($1, $2, $3, $4) RETURNING *', [nombre, descripcion, origen_id, imagen]);
