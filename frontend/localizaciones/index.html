@@ -11,16 +11,118 @@
         <a href="../index.html">
             <b>Pagina Principal</b>
         </a>
-        <a href="./index.html">
+        <a href="../index.html">
             <b>Personajes</b>
         </a>
         <a href="../estadisticas/index.html">
             <b>Estadísticas</b>
         </a>
-        <a href="../localizaciones/index.html">
+        <a href="./localizaciones/index.html">
             <b>Localizaciones</b>
         </a> 
         <a href="../votar/index.html">
             <b>Votar</b>
         </a>
     </div>
+    <div class="mid" id="localizations">
+        <div class="list_page">
+            <div class="top_list">
+                <div class="title">
+                    <h1>
+                        <b>Localizaciones</b>
+                    </h1>
+                </div>
+                <div class="add_delete_update_buttons">
+                    <button onclick="add_localization()" class="add">
+                        Añadir Localización
+                    </button>
+                    <button onclick="delete_localization()" class="delete">
+                        Eliminar Localización
+                    </button>
+                    <button onclick="update_localization()" class="update">
+                        Actualizar Localización
+                    </button>
+                </div>
+            </div>
+            <br><hr><br>
+            <div class="order_list">
+                <label for="order_characters">Criterio para Ordenar</label>
+                <select name="criteria" id="order_localization">
+                    <option value="alhpabet_frontwards">A-Z</option>
+                    <option value="alphabet_backwards">Z-A</option>
+                    <option value="id">ID</option>
+                    <option value="origin">Serie</option>
+                </select>
+            </div>
+            <br>
+            <div class="display_list">
+                <div class="img_block small">
+                    <h2>
+                        <b>Konoha</b>
+                    </h2>
+                    <br><hr><br>
+                    <div class="frame">
+                        <img src="https://wallpapers.com/images/featured/konoha-kwldytpkkc1uo4qb.jpg" alt="Naruto">
+                    </div>
+                    <br><hr><br>
+                    <h4 id="first">
+                        Serie
+                    </h4>
+                    <p>
+                        Naruto
+                    </p>
+                    <h4>
+                        Descripción
+                    </h4>
+                    <p>
+                        sample text
+                    </p>
+                </div>
+                <div class="img_block small">
+                    <h2>
+                        <b>Kirigakure</b>
+                    </h2>
+                    <br><hr><br>
+                    <div class="frame">
+                        <img src="https://static.wikia.nocookie.net/naruto/images/1/17/Kirigakure_Actualidad_Anime.png/revision/latest?cb=20240102205050&path-prefix=es" alt="Naruto">
+                    </div>
+                    <br><hr><br>
+                    <h4 id="first">
+                        Serie
+                    </h4>
+                    <p>
+                        Naruto
+                    </p>
+                    <h4>
+                        Descripción
+                    </h4>
+                    <p>
+                        sample text
+                    </p>
+                </div>
+                <div class="img_block small">
+                    <h2>
+                        <b>Shibuya</b>
+                    </h2>
+                    <br><hr><br>
+                    <div class="frame">
+                        <img src="https://staticg.sportskeeda.com/editor/2023/09/6f6db-16950807622217-1920.jpg" alt="Naruto">
+                    </div>
+                    <br><hr><br>
+                    <h4 id="first">
+                        Serie
+                    </h4>
+                    <p>
+                        Jujutsu Kaisen
+                    </p>
+                    <h4>
+                        Descripción
+                    </h4>
+                    <p>
+                        sample text
+                    </p>
+                </div> 
+            </div>
+        </div>
+    </div>
+</body>
