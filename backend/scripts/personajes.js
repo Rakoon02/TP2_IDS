@@ -46,9 +46,23 @@ async function deletePersonaje(id)
     }    
 }
 
+async function updatePersonaje(id, nombre, origen_id, descripcion, poder, imagen)
+{
+    const result = await dbClient.query('UPDATE personajes SET nombre = $1, origen_id = $2, descripcion = $3, poder = $4, imagen = $5 WHERE id = $6 RETURNING *', [nombre, origen_id, descripcion, poder, imagen, id]);
+    if(result.rowCount === 0)
+    {
+        return undefined;
+    }
+    else
+    {
+        return result.rows[0];
+    }
+}
+
 module.exports = {
     getAllPersonajes,
     getOnePersonaje,
     createBrainroto,
-    deletePersonaje
+    deletePersonaje,
+    updatePersonaje
 };
