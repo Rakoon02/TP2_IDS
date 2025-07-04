@@ -70,5 +70,6 @@ module.exports = {
     getOneLugar,
     createLugar,
     deleteLugar,
-    updateLugar
+    updateLugar,
+    getLugaresByOrigen
 };

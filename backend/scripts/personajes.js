@@ -70,5 +70,6 @@ module.exports = {
     getOnePersonaje,
     createPersonaje,
     deletePersonaje,
-    updatePersonaje
+    updatePersonaje,
+    getPersonajesByOrigen
 };
