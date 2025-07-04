@@ -259,7 +259,7 @@ body{
     display: flex;
     flex-direction: column;
 }
-.top_list .add_delete_update_buttons button{
+.top_list .add_delete_update_buttons a{
     width: 100%;
     height: 100%;
     border: none;
@@ -269,14 +269,15 @@ body{
     background-color: var(--object-background-color);
     color: var(--font-color);
     font-size: medium;
+    text-decoration: none;
     transition-duration: 0.25s;
 }
-.top_list .add_delete_update_buttons button:hover{
+.top_list .add_delete_update_buttons a:hover{
     background-color: var(--object-secondary-background-color);
     color: white;
     cursor: pointer;
 }
-.top_list .add_delete_update_buttons button:active{
+.top_list .add_delete_update_buttons a:active{
     transform: scale(0.95);
     background-color: var(--object-terciary-background-color);
     transition-duration: 0s;
@@ -334,6 +335,66 @@ body{
 
 /*pag_principal*/
 /*#region*/
+/*#endregion*/
+
+/*aniadir/eliminar/actualizar subpaginas*/
+/*#region*/
+.mid.add_delete_update_subpage{
+    width: 90%;
+    padding: 2.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mid.add_delete_update_subpage .char_inputs{
+    width: 50%;
+    padding: 1.25%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-secondary-color);
+}
+.mid.add_delete_update_subpage .char_inputs input{
+    width: 100%;
+    height: 25px;
+    font-size: large;
+}
+
+.mid.add_delete_update_subpage .char_inputs select{
+    width: 100%;
+    height: 25px;
+    font-size: large;
+}
+.mid.add_delete_update_subpage button{
+    width: 30%;
+    min-height: 60px;
+    height: 75%;
+    max-height: 70px;
+    margin: 1%;
+    padding: 0;
+    border:none;
+    border-radius: 15px;
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--object-background-color);
+    color: var(--font-color);
+    font-size:xx-large;
+    transition-duration: 0.25s;
+}
+.mid.add_delete_update_subpage button:hover{
+    background-color: var(--object-secondary-background-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+.mid.add_delete_update_subpage button:active{
+    transform: scale(0.8);
+    background-color: var(--object-terciary-background-color);
+    transition-duration: 0s;
+}
 /*#endregion*/
 
 
