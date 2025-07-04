@@ -15,29 +15,76 @@ app.get('/test-database', async (req,res) => {
     }
 });
 
-//Get un personaje
-app.get('/api/personajes/:id', async (req, res) => {
-    //res.json({ status: 'OK'})
-});
+const {
+    getAllPersonajes,
+    getOnePersonaje,
+    createPersonaje,
+    deletePersonaje,
+    updatePersonaje,
+    getPersonajesByOrigen
+} = require('./scripts/personajes');
+
+const {
+    getAllUniversos,
+    getOneUniverso,
+    createUniverso,
+    deleteUniverso,
+    updateUniverso
+} = require('./scripts/universos');
+
+const {
+    getAllLugares,
+    getOneLugar,
+    createLugar,
+    deleteLugar,
+    updateLugar,
+    getLugaresByOrigen
+} = require('./scripts/lugares');
 
 //Get todos los personajes
 app.get('/api/personajes/', async (req, res) => {
-    //res.json({ status: 'OK'})
+    const personajes = await getAllPersonajes();
+    res.json(personajes);
+});
+
+//Get un personaje
+app.get('/api/personajes/:id', async (req, res) => {
+    const personaje = await getOnePersonaje(req.params.id);
+    if (personaje) {
+        res.json(personaje);
+    } else {
+        res.status(404).json({ error: 'Personaje no encontrado' });
+    }
 });
 
 //Post un personaje
 app.post('/api/personajes/', async (req, res) => {
-    //res.json({ status: 'OK'})
+    if (!req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+    }
+
+    const personaje = await createPersonaje(req.body.nombre, req.body.origen_id, req.body.descripcion, req.body.poder, req.body.imagen);
+    if(result.rowCount === 0) {
+        return undefined;
+    } else {
+        return result.rows[0];
+    }
+
+    if (!personaje) {
+        return res.status(500).json({ error: 'Error al crear el personaje' });
+    }
+    res.status(201).json(personaje);
+
 });
 
 //Delete un personaje
 app.delete('/api/personajes/:id', async (req, res) => {
-    //res.json({ status: 'OK'})
+    res.json({ status: 'OK'})
 });
 
 //Update un personaje
 app.put('/api/personajes/', async (req, res) => {
-    //res.json({ status: 'OK'})
+    res.json({ status: 'OK'})
 });
 
 
