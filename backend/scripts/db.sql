@@ -37,5 +37,6 @@ CREATE TABLE universos (
     nombre varchar(100) NOT NULL UNIQUE,
     creador varchar(100) NOT NULL,
     fecha varchar(50) NOT NULL,
-    descripcion varchar(255) NOT NULL, 
+    descripcion varchar(255) NOT NULL,
+    pais varchar(100) NOT NULL, 
 );
