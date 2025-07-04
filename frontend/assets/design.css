@@ -252,6 +252,7 @@ body{
 }
 .top_list .add_delete_update_buttons{
     width: 15%;
+    height: 100%;
     border: none;
     border-radius: 15px;
     position: inherit;
@@ -260,16 +261,14 @@ body{
 }
 .top_list .add_delete_update_buttons button{
     width: 100%;
-    min-height: 20px;
-    height: 75%;
-    max-height: 70px;
+    height: 100%;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--object-background-color);
     color: var(--font-color);
-    font-size: small;
+    font-size: medium;
     transition-duration: 0.25s;
 }
 .top_list .add_delete_update_buttons button:hover{
