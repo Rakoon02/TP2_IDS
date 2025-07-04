@@ -20,7 +20,7 @@ async function getOnePersonaje(id)
     return result.rows[0];
 }
 
-async function createBrainroto(nombre, origen_id, descripcion, poder, imagen)
+async function createPersonaje(nombre, origen_id, descripcion, poder, imagen)
 {
     const result = await dbClient.query('INSERT INTO personajes (nombre, origen_id, descripcion, poder, imagen) VALUES ($1, $2, $3, $4, $5) RETURNING *', [nombre, origen_id, descripcion, poder, imagen]);
     if(result.rowCount === 0)
@@ -62,7 +62,7 @@ async function updatePersonaje(id, nombre, origen_id, descripcion, poder, imagen
 module.exports = {
     getAllPersonajes,
     getOnePersonaje,
-    createBrainroto,
+    createPersonaje,
     deletePersonaje,
     updatePersonaje
 };
