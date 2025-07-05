@@ -57,6 +57,16 @@ app.get('/api/personajes/:id', async (req, res) => {
     }
 });
 
+//Get un personaje por origen
+app.get('/api/personajes/origen/:origen_id', async (req, res) => {
+    const personajes = await getPersonajesByOrigen(req.params.origen_id);
+    if (personajes.length > 0) {
+        res.json(personajes);
+    } else {
+        res.status(404).json({ error: 'No se encontraron personajes para el origen especificado' });
+    }
+});
+
 //Post un personaje
 app.post('/api/personajes/', async (req, res) => {
     if (!req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder) {
@@ -69,12 +79,6 @@ app.post('/api/personajes/', async (req, res) => {
     } else {
         return result.rows[0];
     }
-
-    if (!personaje) {
-        return res.status(500).json({ error: 'Error al crear el personaje' });
-    }
-    res.status(201).json(personaje);
-
 });
 
 //Delete un personaje
@@ -90,12 +94,71 @@ app.delete('/api/personajes/:id', async (req, res) => {
     if (!personaje) {
         return res.status(404).json({ error: 'Personaje id: ' + req.params.id + 'no ecntrado' });
     }
-    res.json({ status: 'OK', id : personaje});
+    res.json({ status: 'OK' });
 });
 
 //Update un personaje
 app.put('/api/personajes/', async (req, res) => {
-    res.json({ status: 'OK'})
+    if (!req.body.id || !req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+    }
+
+    const personaje = await updatePersonaje(req.body.id, req.body.nombre, req.body.origen_id, req.body.descripcion, req.body.poder, req.body.imagen);
+    if (!personaje) {
+        return res.status(404).json({ error: 'Personaje no encontrado' });
+    }
+    res.json(personaje);
+});
+
+//Get todos los universos
+app.get('/api/universos/', async (req, res) => {
+    const universos = await getAllUniversos();
+    res.json(universos);
+});
+
+//Get un universo
+app.get('/api/universos/:id', async (req, res) => {
+    const universo = await getOneUniverso(req.params.id);
+    if (universo) {
+        res.json(universo);
+    } else {   
+        res.status(404).json({ error: 'Universo no encontrado' });
+    }
+});
+
+//Post un universo
+app.post('/api/universos/', async (req, res) => {
+    if (!req.body.nombre || !req.body.creador || !req.body.fecha || !req.body.descripcion || !req.body.pais) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+    }
+
+    const universo = await createUniverso(req.body.nombre, req.body.creador, req.body.fecha, req.body.descripcion, req.body.pais);
+    if (!universo) {
+        return res.status(500).json({ error: 'Error al crear el universo' });
+    }
+    res.json(universo);
+});
+
+//Delete un universo
+app.delete('/api/universos/:id', async (req, res) => {
+    const result = await deleteUniverso(req.params.id);
+    if (result.rowCount === 0) {
+        return res.status(404).json({ error: 'Universo no encontrado' });
+    }
+    res.json({ status: 'OK' });
+});
+
+//Update un universo
+app.put('/api/universos/', async (req, res) => {
+    if (!req.body.id || !req.body.nombre || !req.body.creador || !req.body.fecha || !req.body.descripcion || !req.body.pais) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+    }
+
+    const universo = await updateUniverso(req.body.id, req.body.nombre, req.body.creador, req.body.fecha, req.body.descripcion, req.body.pais);
+    if (!universo) {
+        return res.status(404).json({ error: 'Universo no encontrado' });
+    }
+    res.json(universo);
 });
 
 
