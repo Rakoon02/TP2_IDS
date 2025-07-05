@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	.then(personaje => {
 		document.getElementById('imagen-personaje').src = personaje.imagen;
 		document.getElementById('nombre-personaje').textContent = personaje.nombre;
-		document.getElementById('serie-personaje').textContent = personaje.nombre_universo || "Desconocido";
+		document.getElementById('serie-personaje').textContent = personaje.nombre_universo;
 		document.getElementById('poder-personaje').textContent = personaje.poder;
 		document.getElementById('descripcion-personaje').textContent = personaje.descripcion;
 	      })
