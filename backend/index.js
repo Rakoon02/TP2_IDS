@@ -27,7 +27,6 @@ app.get('/test-database', async (req, res) => {
 app.get('/api/personajes/:id', async (req, res) => {
     //res.json({ status: 'OK'})
 });
-app.use(express.static(path.join(__dirname, 'frontend')));
 
 //Get todos los personajes
 app.get('/api/personajes/', async (req, res) => {
