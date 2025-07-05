@@ -4,10 +4,20 @@ const pool = require('../base_de_datos');
 
 router.get('/aleatorio', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM personajes ORDER BY RANDOM() LIMIT 1');
+    const query = `
+      SELECT p.*, u.nombre AS nombre_universo
+      FROM personajes p
+      LEFT JOIN universos u ON p.origen_id = u.id
+      ORDER BY RANDOM()
+      LIMIT 1;`
+    ;
+
+    const result = await pool.query(query);
+
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'No se encontraron personajes' });
     }
+
     res.json(result.rows[0]);
   } catch (error) {
     console.error('Error al obtener personaje aleatorio:', error);
@@ -16,4 +26,3 @@ router.get('/aleatorio', async (req, res) => {
 });
 
 module.exports = router;
-
