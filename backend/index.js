@@ -57,7 +57,7 @@ app.get('/api/personajes/:id', async (req, res) => {
     }
 });
 
-//Get un personaje por origen
+//Get personajes por origen
 app.get('/api/personajes/origen/:origen_id', async (req, res) => {
     const personajes = await getPersonajesByOrigen(req.params.origen_id);
     if (personajes.length > 0) {
@@ -161,6 +161,66 @@ app.put('/api/universos/', async (req, res) => {
     res.json(universo);
 });
 
+//Get todos los lugares
+app.get('/api/lugares/', async (req, res) => {
+    const lugares = await getAllLugares();
+    res.json(lugares);
+});
+
+//Get un lugar
+app.get('/api/lugares/:id', async (req, res) => {
+    const lugar = await getOneLugar(req.params.id);
+    if (lugar) {
+        res.json(lugar);
+    } else {
+        res.status(404).json({ error: 'Lugar no encontrado' });
+    }
+});
+
+//Get lugares por origen
+app.get('/api/lugares/origen/:origen_id', async (req, res) => {
+    const lugares = await getLugaresByOrigen(req.params.origen_id);
+    if (lugares.length > 0) {
+        res.json(lugares);
+    } else {
+        res.status(404).json({ error: 'No se encontraron lugares para el origen especificado' });
+    }
+});
+
+//Post un lugar
+app.post('/api/lugares/', async (req, res) => {
+    if (!req.body.nombre || !req.body.descripcion || !req.body.universo) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+    }
+
+    const lugar = await createLugar(req.body.nombre, req.body.descripcion, req.body.universo, req.body.imagen);
+    if (!lugar) {
+        return res.status(500).json({ error: 'Error al crear el lugar' });
+    }
+    res.json(lugar);
+});
+
+//Delete un lugar
+app.delete('/api/lugares/:id', async (req, res) => {
+    const result = await deleteLugar(req.params.id);
+    if (result.rowCount === 0) {
+        return res.status(404).json({ error: 'Lugar no encontrado' });
+    }
+    res.json({ status: 'OK' });
+});
+
+//Update un lugar
+app.put('/api/lugares/', async (req, res) => {
+    if (!req.body.id || !req.body.nombre || !req.body.descripcion || !req.body.universo) {
+        return res.status(400).json({ error: 'Faltan datos requeridos' });
+    }
+
+    const lugar = await updateLugar(req.body.id, req.body.nombre, req.body.descripcion, req.body.universo, req.body.imagen);
+    if (!lugar) {
+        return res.status(404).json({ error: 'Lugar no encontrado' });
+    }
+    res.json(lugar);
+});
 
 app.listen(PORT, () => {
 	console.log(`Servidor corriendo en http://localhost:${PORT}`);
