@@ -1,9 +1,25 @@
+CREATE TABLE universos (
+    id serial primary key,
+    nombre varchar(100) NOT NULL UNIQUE,
+    creador varchar(100) NOT NULL,
+    fecha varchar(50) NOT NULL,
+    descripcion varchar(255) NOT NULL
+);
+
 CREATE TABLE personajes (
     id serial primary key,
     nombre varchar(100) NOT NULL,
     origen_id int REFERENCES universos(id),
     descripcion varchar(255) NOT NULL,
     poder varchar(100) NOT NULL,
+    imagen varchar(255)
+);
+
+CREATE TABLE lugares (
+    id serial primary key,
+    nombre varchar(100) NOT NULL UNIQUE,
+    descripcion varchar(255) NOT NULL,
+    origen_id int REFERENCES universos(id),
     imagen varchar(255)
 );
 
@@ -22,20 +38,4 @@ CREATE TABLE estadisticas (
     duelos_ganados int default 0,
     duelos_perdidos int default 0,
     porcentaje_victoria decimal(5,2) default 0.00
-);
-
-CREATE TABLE lugares (
-    id serial primary key,
-    nombre varchar(100) NOT NULL UNIQUE,
-    descripcion varchar(255) NOT NULL,
-    origen_id int REFERENCES universos(id),
-    imagen varchar(255)
-);
-
-CREATE TABLE universos (
-    id serial primary key,
-    nombre varchar(100) NOT NULL UNIQUE,
-    creador varchar(100) NOT NULL,
-    fecha varchar(50) NOT NULL,
-    descripcion varchar(255) NOT NULL
 );
