@@ -5,7 +5,7 @@ CREATE TABLE personajes (
     descripcion varchar(255) NOT NULL,
     poder varchar(100) NOT NULL,
     imagen varchar(255)
-)
+);
 
 CREATE TABLE duelo (
     id serial primary key,
@@ -14,7 +14,7 @@ CREATE TABLE duelo (
     fecha TIMESTAMP DEFAULT now(),
     lugar_id INT REFERENCES lugares(id)
     ganador_id int REFERENCES personajes(id),
-)
+);
 
 CREATE TABLE estadisticas (
     personaje_id int REFERENCES personajes (id),
@@ -22,7 +22,7 @@ CREATE TABLE estadisticas (
     duelos_ganados int default 0,
     duelos_perdidos int default 0,
     porcentaje_victoria decimal(5,2) default 0.00
-)
+);
 
 CREATE TABLE lugares (
     id serial primary key,
