@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const pool = require('./base_de_datos')
+const pool = require('./base_de_datos');
+const cors = require('cors');
+const personajesRuta = require('./rutas/personajes');
+const path = require('path');
 
+app.use(cors());
 app.use(express.json());
+
+app.use('/api/personajes', personajesRuta);
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.get('/test-database', async (req,res) => {
 	try{
