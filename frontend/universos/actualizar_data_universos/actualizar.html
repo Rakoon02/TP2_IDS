@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multiversus - Actualizar Universo</title>
+  <link rel="stylesheet" href="../../assets/design.css" />
+</head>
+<body>
+  <div class="top_bar">
+    <a href="../../index.html"><b>Página Principal</b></a>
+    <a href="../../personajes/index.html"><b>Personajes</b></a>
+    <a href="../index.html"><b>Universos</b></a>
+    <a href="../../localizaciones/index.html"><b>Localizaciones</b></a>
+    <a href="../../votar/index.html"><b>Votar</b></a>
+  </div>
+
+  <div class="mid add_delete_update_subpage" id="update_universo">
+    <h1>
+        <b>Actualizar Información de un Universo</b>
+    </h1>
+    <p> *Obligatorio</p>
+    <br>
+
+    <div class="char_inputs">
+      <h3>
+        *Selecciona el Universo
+      </h3>
+      <select id="universoDropdown">
+        <option value="">Seleccione un universo...</option>
+      </select>
+      <br>
+
+      <h3>*Nombre del Universo</h3>
+        <input type="text" id="nombre" maxlength="100" />
+      <br>
+
+      <h3>*Creador del Universo</h3>
+        <input type="text" id="creador" maxlength="100" />
+      <br>
+
+      <h3>
+        *Fecha de Creación
+      </h3>
+        <input type="text" id="fecha" maxlength="50" />
+      <br>
+
+      <h3>
+        *Descripción
+      </h3>
+        <input type="text" id="descripcion" maxlength="254" />
+    </div>
+
+    <button>Actualizar Universo</button>
+  </div>
+</body>
+</html>
+

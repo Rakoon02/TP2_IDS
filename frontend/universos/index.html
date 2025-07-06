@@ -1,28 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TP2</title>
-        <link rel="stylesheet" href="../assets/design.css">
-    </head>
-    <body>
-        <div class="top_bar">
-            <a href="../index.html">
-                <b>Pagina Principal</b>
-            </a>
-            <a href="../personajes/index.html">
-                <b>Personajes</b>
-            </a>
-            <a href="./index.html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TP2</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+  </head>
+  <body>
+    <div class="top_bar">
+      <a href="../index.html">
+        <b>Página Principal</b>
+      </a>
+      <a href="../personajes/index.html">
+        <b>Personajes</b>
+      </a>
+      <a href="./index.html">
+        <b>Universos</b>
+      </a>
+      <a href="../localizaciones/index.html">
+        <b>Localizaciones</b>
+      </a>
+      <a href="../votar/index.html">
+        <b>Votar</b>
+      </a>
+    </div>
+
+    <div class="mid" id="universos">
+      <div class="list_page">
+        <div class="top_list">
+          <div class="title">
+            <h1>
                 <b>Universos</b>
-            </a>
-            <a href="../localizaciones/index.html">
-                <b>Localizaciones</b>
-            </a> 
-            <a href="../votar/index.html">
-                <b>Votar</b>
-            </a>
+            </h1>
+          </div>
+          <div class="add_delete_update_buttons">
+            <a href="./actualizar_data_universos/aniadir.html" class="add">Añadir Universo</a>
+            <a href="./actualizar_data_universos/borrar.html" class="delete">Eliminar Universo</a>
+            <a href="./actualizar_data_universos/actualizar.html" class="update">Actualizar Universo</a>
+          </div>
         </div>
-    </body>
+
+        <br><hr><br>
+
+        <div class="order_list">
+          <label for="order_universos">Criterio para Ordenar</label>
+          <select name="criteria" id="order_universos">
+            <option value="alphabet_frontwards">A-Z</option>
+            <option value="alphabet_backwards">Z-A</option>
+            <option value="id">ID</option>
+            <option value="fecha">Fecha</option>
+          </select>
+        </div>
+
+        <br>
+
+        <div class="display_list" id="lista-universos">
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        fetch('http://localhost:3000/api/universos')
+          .then(res => res.json())
+          .then(universos => {
+            const container = document.getElementById('lista-universos');
+            container.innerHTML = '';
+
+            universos.forEach(u => {
+              const universoHTML = `
+                <div class="img_block small">
+                  <h2><b>${u.nombre}</b></h2>
+                  <br><hr><br>
+                  <h4>Creador</h4>
+                  <p>${u.creador}</p>
+                  <h4>Fecha</h4>
+                  <p>${u.fecha}</p>
+                  <h4>Descripción</h4>
+                  <p>${u.descripcion}</p>
+                </div>
+              `;
+              container.innerHTML += universoHTML;
+            });
+          })
+          .catch(err => {
+            console.error('Error al cargar universos:', err);
+          });
+      });
+    </script>
+  </body>
 </html>
