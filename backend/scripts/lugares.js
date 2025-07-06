@@ -2,19 +2,19 @@ const pool = require('../base_de_datos');
 
 async function getAllLugares()
 {
-    const result = await pool.query('SELECT * FROM lugares');
+    const result = await pool.query('SELECT lugares.*,universos.nombre AS nombre_universo FROM lugares JOIN universos ON lugares.origen_id = universos.id');
     return result.rows;
 }
 
 async function getOneLugar(id)
 {
-    const result = await pool.query('SELECT * FROM lugares WHERE id = $1 LIMIT 1', [id]);    
+    const result = await pool.query('SELECT lugares.*,universos.nombre AS nombre_universo FROM lugares JOIN universos ON lugares.origen_id = universos.id WHERE lugares.id = $1 LIMIT 1', [id]);    
     return result.rows[0];
 }
 
 async function getLugaresByOrigen(origen_id)
 {
-    const result = await pool.query('SELECT * FROM lugares WHERE origen_id = $1', [origen_id]);
+    const result = await pool.query('SELECT lugares.*,universos.nombre AS nombre_universo FROM lugares JOIN universos ON lugares.origen_id = universos.id WHERE lugares.origen_id = $1', [origen_id]);
     return result.rows;
 }
 
