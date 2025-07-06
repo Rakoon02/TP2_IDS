@@ -1,146 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2</title>
-    <link rel="stylesheet" href="../assets/design.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TP2</title>
+  <link rel="stylesheet" href="../assets/design.css" />
 </head>
 <body>
-    <div class="top_bar">
-        <a href="../index.html">
-            <b>Pagina Principal</b>
-        </a>
-        <a href="./index.html">
-            <b>Personajes</b>
-        </a>
-        <a href="../estadisticas/index.html">
-            <b>Estadísticas</b>
-        </a>
-        <a href="../localizaciones/index.html">
-            <b>Localizaciones</b>
-        </a> 
-        <a href="../votar/index.html">
-            <b>Votar</b>
-        </a>
-    </div>
-    <div class="mid" id="characters">
-        <div class="list_page">
-            <div class="top_list">
-                <div class="title">
-                    <h1>
-                        <b>Personajes</b>
-                    </h1>
-                </div>
-                <div class="add_delete_update_buttons">
-                    <a href="./actualizar_data_personajes/aniadir.html" class="add">
-                        Añadir Personaje
-                    </a>
-                    <a href="./actualizar_data_personajes/borrar.html" class="delete">
-                        Eliminar Personaje
-                    </a>
-                    <a href="./actualizar_data_personajes/actualizar.html" class="update">
-                        Actualizar Personaje
-                    </a>
-                </div>
-            </div>
-            <br><hr><br>
-            <div class="order_list">
-                <label for="order_characters">Criterio para Ordenar</label>
-                <select name="criteria" id="order_characters">
-                    <option value="alhpabet_frontwards">A-Z</option>
-                    <option value="alphabet_backwards">Z-A</option>
-                    <option value="id">ID</option>
-                    <option value="origin">Serie</option>
-                </select>
-            </div>
-            <br>
-            <div class="display_list">
-                <div class="img_block small">
-                    <h2>
-                        <b>Naruto Uzumaki</b>
-                    </h2>
-                    <br><hr><br>
-                    <div class="frame">
-                        <img src="https://fotografias-neox.atresmedia.com/clipping/cmsimages01/2022/03/04/6F3E2E33-8AAF-4607-8B3E-80261F00FB86/naruto_104.jpg?crop=1080,1080,x419,y0&width=1200&height=1200&optimize=low&format=webply" alt="Naruto">
-                    </div>
-                    <br><hr><br>
-                    <h4 id="first">
-                        Serie
-                    </h4>
-                    <p>
-                        Naruto
-                    </p>
-                    <h4>
-                        Ataque Principal
-                    </h4>
-                    <p>
-                        Rasengan
-                    </p>
-                    <h4>
-                        Descripción
-                    </h4>
-                    <p>
-                        sample text
-                    </p>
-                </div>
-                <div class="img_block small">
-                    <h2>
-                        <b>Naruto Uzumaki</b>
-                    </h2>
-                    <br><hr><br>
-                    <div class="frame">
-                        <img src="https://fotografias-neox.atresmedia.com/clipping/cmsimages01/2022/03/04/6F3E2E33-8AAF-4607-8B3E-80261F00FB86/naruto_104.jpg?crop=1080,1080,x419,y0&width=1200&height=1200&optimize=low&format=webply" alt="Naruto">
-                    </div>
-                    <br><hr><br>
-                    <h4 id="first">
-                        Serie
-                    </h4>
-                    <p>
-                        Naruto
-                    </p>
-                    <h4>
-                        Ataque Principal
-                    </h4>
-                    <p>
-                        Rasengan
-                    </p>
-                    <h4>
-                        Descripción
-                    </h4>
-                    <p>
-                        sample text
-                    </p>
-                </div>
-                <div class="img_block small">
-                    <h2>
-                        <b>Naruto Uzumaki</b>
-                    </h2>
-                    <br><hr><br>
-                    <div class="frame">
-                        <img src="https://fotografias-neox.atresmedia.com/clipping/cmsimages01/2022/03/04/6F3E2E33-8AAF-4607-8B3E-80261F00FB86/naruto_104.jpg?crop=1080,1080,x419,y0&width=1200&height=1200&optimize=low&format=webply" alt="Naruto">
-                    </div>
-                    <br><hr><br>
-                    <h4 id="first">
-                        Serie
-                    </h4>
-                    <p>
-                        Naruto
-                    </p>
-                    <h4>
-                        Ataque Principal
-                    </h4>
-                    <p>
-                        Rasengan
-                    </p>
-                    <h4>
-                        Descripción
-                    </h4>
-                    <p>
-                        sample text
-                    </p>
-                </div> 
-            </div>
+  <div class="top_bar">
+    <a href="../index.html"><b>Página Principal</b></a>
+    <a href="./index.html"><b>Personajes</b></a>
+    <a href="../estadisticas/index.html"><b>Estadísticas</b></a>
+    <a href="../localizaciones/index.html"><b>Localizaciones</b></a>
+    <a href="../votar/index.html"><b>Votar</b></a>
+  </div>
+
+  <div class="mid" id="characters">
+    <div class="list_page">
+      <div class="top_list">
+        <div class="title">
+          <h1><b>Personajes</b></h1>
         </div>
+        <div class="add_delete_update_buttons">
+          <a href="./actualizar_data_personajes/aniadir.html" class="add">Añadir Personaje</a>
+          <a href="./actualizar_data_personajes/borrar.html" class="delete">Eliminar Personaje</a>
+          <a href="./actualizar_data_personajes/actualizar.html" class="update">Actualizar Personaje</a>
+        </div>
+      </div>
+
+      <br><hr><br>
+
+      <div class="order_list">
+        <label for="order_characters">Criterio para Ordenar</label>
+        <select name="criteria" id="order_characters">
+          <option value="alphabet_frontwards">A-Z</option>
+          <option value="alphabet_backwards">Z-A</option>
+          <option value="id">ID</option>
+          <option value="origin">Serie</option>
+        </select>
+      </div>
+
+      <br>
+
+      <div class="display_list" id="lista-personajes">
+        <!-- Los personajes se insertarán dinámicamente aquí -->
+      </div>
     </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('http://localhost:3000/api/personajes')
+        .then(res => res.json())
+        .then(personajes => {
+          const container = document.getElementById('lista-personajes');
+          container.innerHTML = '';
+
+          personajes.forEach(p => {
+            const personajeHTML = `
+              <div class="img_block small">
+                <h2><b>${p.nombre}</b></h2>
+                <br><hr><br>
+                <div class="frame">
+                  <img src="${p.imagen}" alt="${p.nombre}">
+                </div>
+                <br><hr><br>
+                <h4>Serie</h4>
+                <p>${p.nombre_universo}</p>
+                <h4>Ataque Principal</h4>
+                <p>${p.poder}</p>
+                <h4>Descripción</h4>
+                <p>${p.descripcion}</p>
+              </div>
+            `;
+            container.innerHTML += personajeHTML;
+          });
+        })
+        .catch(err => {
+          console.error('Error al cargar personajes:', err);
+        });
+    });
+  </script>
 </body>
+</html>
+
