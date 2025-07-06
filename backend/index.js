@@ -13,11 +13,8 @@ app.use(cors());
 app.use('/api/personajes', personajesRuta);
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-app.use('/api/personajes', personajesRuta);
-app.use(express.static(path.join(__dirname, '../frontend')));
-
-app.get('/test-database', async (req,res) => {
-	try{
+app.get('/test-database', async (req, res) => {
+  try {
     const result = await pool.query('SELECT NOW()');
     res.json({ success: true, time: result.rows[0].now });
     } catch (error) {
