@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP2</title>
+        <link rel="stylesheet" href="../assets/design.css">
+    </head>
+    <body>
+        <div class="top_bar">
+            <a href="../index.html">
+                <b>Pagina Principal</b>
+            </a>
+            <a href="../personajes/index.html">
+                <b>Personajes</b>
+            </a>
+            <a href="../universos/index.html">
+                <b>Universos</b>
+            </a>
+            <a href="../localizaciones/index.html">
+                <b>Localizaciones</b>
+            </a> 
+            <a href="../votar/index.html">
+                <b>Votar</b>
+            </a>
+        </div>
+        <div class="mid add_delete_update_subpage" id="delete_character">
+            <h1>
+                <b>Borrar Localización</b>
+            </h1>
+            <br>
+            <div class="char_inputs">
+                <h3>*Seleccione la Localización</h3>
+                <select id="characterDropdown">
+                    <option value="">Seleccione la Localización ...</option>
+                </select>
+                <br>
+            </div>
+            <button onclick="delete_char()">
+                Eliminar Localización
+            </button>
+        </div>
+    </body>
+</html>
