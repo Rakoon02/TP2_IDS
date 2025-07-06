@@ -15,6 +15,7 @@ CREATE TABLE personajes (
     imagen varchar(255)
 );
 
+
 CREATE TABLE lugares (
     id serial primary key,
     nombre varchar(100) NOT NULL UNIQUE,
@@ -22,6 +23,7 @@ CREATE TABLE lugares (
     origen_id int REFERENCES universos(id),
     imagen varchar(255)
 );
+
 
 CREATE TABLE duelo (
     id serial primary key,
@@ -39,3 +41,4 @@ CREATE TABLE estadisticas (
     duelos_perdidos int default 0,
     porcentaje_victoria decimal(5,2) default 0.00
 );
+
