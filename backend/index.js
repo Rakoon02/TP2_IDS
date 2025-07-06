@@ -93,14 +93,7 @@ app.post('/api/personajes/', async (req, res) => {
 app.delete('/api/personajes/:id', async (req, res) => {
     const result = await deletePersonaje(req.params.id);
     if (result.rowCount === 0) {
-        return res.status(404).json({ error: 'Personaje no encontrado' });
-    }
-    res.json({ status: 'OK' });
-
-    const personaje = await deletePersonaje(req.params.id);
-
-    if (!personaje) {
-        return res.status(404).json({ error: 'Personaje id: ' + req.params.id + 'no ecntrado' });
+        return res.status(404).json({ error: 'Personaje id: ' + req.params.id + 'no encontrado' });
     }
     res.json({ status: 'OK' });
 });
