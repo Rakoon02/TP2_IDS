@@ -32,20 +32,30 @@
                     </h2>
                     <br><hr><br>
                     <div class="frame">
-                        <img src="https://fotografias-neox.atresmedia.com/clipping/cmsimages01/2022/03/04/6F3E2E33-8AAF-4607-8B3E-80261F00FB86/naruto_104.jpg?crop=1080,1080,x419,y0&width=1200&height=1200&optimize=low&format=webply" alt="Naruto">
+                        <img src="" alt="" id="imagen-personaje-1">
                     </div>
                     <br><hr><br>
                     <h4 id="first">
                         Nombre
                     </h4>
-                    <p>
-                        Naruto Uzumaki
+                    <p id="nombre-personaje-1">
+                        
                     </p>
                 </div>
                 <div style="text-align: center;" class="vote_block">
                     <h1>
                         <b>Votar</b>
                     </h1>
+                    <hr><br>
+                    <h2>
+                        <b>
+                            Pelean en:
+                        </b>
+                    </h2>
+                    <br>
+                    <p id="localizacion-combate">
+                        
+                    </p>
                     <br><hr><br>
                     <div class="vote_char_section" id="char_1">
                         <h2>
@@ -71,20 +81,59 @@
                     </h2>
                     <br><hr><br>
                     <div class="frame">
-                        <img src="https://media.gq.com.mx/photos/5f6ce732bc946e88f6c96320/16:9/w_2560%2Cc_limit/goky%2520ultra%2520instinto.jpg" alt="Naruto">
+                        <img src="" alt="" id="imagen-personaje-2">
                     </div>
                     <br><hr><br>
                     <h4 id="first">
                         Nombre
                     </h4>
-                    <p>
-                        Goku
+                    <p id="nombre-personaje-2">
+                        
                     </p>
                 </div>
             </div>
-            <div class="char_vote_button">
-
-            </div>
         </div>
+        <script>
+            let pj1 = 0;
+            let pj2 = 0;
+            window.addEventListener('DOMContentLoaded', () => {
+	        fetch('http://localhost:3000/api/personajes/aleatorio')
+	        .then(res => res.json())
+	        .then(personaje => {
+		    document.getElementById('imagen-personaje-1').src = personaje.imagen;
+            document.getElementById('imagen-personaje-1').alt = personaje.nombre;
+		    document.getElementById('nombre-personaje-1').textContent = personaje.nombre;
+            pj1 = personaje.id;
+            })
+	        .catch(err => {
+		    console.error("Error al cargar el personaje 1:", err);
+	        });
+            
+	        fetch('http://localhost:3000/api/lugares/aleatorio')
+	        .then(res => res.json())
+	        .then(lugar => {
+		    document.getElementById('localizacion-combate').innerText = lugar.nombre;
+            })
+	        .catch(err => {
+		    console.error("Error al cargar la localizacion:", err);
+	        });
+
+            fetch('http://localhost:3000/api/personajes/aleatorio')
+	        .then(res => res.json())
+            .then(personaje => {
+		    document.getElementById('imagen-personaje-2').src = personaje.imagen;
+            document.getElementById('imagen-personaje-2').alt = personaje.nombre;
+		    document.getElementById('nombre-personaje-2').textContent = personaje.nombre;
+            pj2 = personaje.id;
+            if(pj1 === pj2)
+            {
+                location.reload();
+            }
+            })
+	        .catch(err => {
+		    console.error("Error al cargar el personaje 2:", err);
+	        });
+            });
+        </script>
     </body>
 </html>
