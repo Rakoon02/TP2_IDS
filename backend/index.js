@@ -6,7 +6,6 @@ const cors = require('cors');
 const personajesRuta = require('./rutas/personajes');
 const path = require('path');
 
-app.use(cors());
 app.use(express.json());
 app.use(cors());
 
