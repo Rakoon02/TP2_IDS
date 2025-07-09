@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const pool = require('./base_de_datos');
+const pool = require('./base_de_datos')
 const cors = require('cors');
 const personajesRuta = require('./rutas/personajes');
+const lugaresRuta = require('./rutas/lugares');
 const path = require('path');
 
 app.use(express.json());
 app.use(cors());
-
 app.use('/api/personajes', personajesRuta);
+app.use('/api/lugares', lugaresRuta);
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.get('/test-database', async (req, res) => {
@@ -92,7 +93,15 @@ app.post('/api/personajes/', async (req, res) => {
 app.delete('/api/personajes/:id', async (req, res) => {
     const result = await deletePersonaje(req.params.id);
     if (result.rowCount === 0) {
-        return res.status(404).json({ error: 'Personaje id: ' + req.params.id + 'no encontrado' });
+
+        return res.status(404).json({ error: 'Personaje no encontrado' });
+    }
+    res.json({ status: 'OK' });
+
+    const personaje = await deletePersonaje(req.params.id);
+
+    if (!personaje) {
+        return res.status(404).json({ error: 'Personaje id: ' + req.params.id + 'no econtrado' });
     }
     res.json({ status: 'OK' });
 });

@@ -1,94 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2</title>
+    <title>Multiversus</title>
     <link rel="stylesheet" href="./assets/design.css">
-</head>
-<body>
+  </head>
+  <body>
     <div class="top_bar">        
-        <a href="./index.html">      
-            <b>Página Principal</b>     
-        </a>     
-        <a href="./personajes/index.html">
-            <b>Personajes</b>     
-        </a>     
-        <a href="./estadisticas/index.html">
-            <b>Estadísticas</b>     
-        </a>     
-        <a href="./votar/index.html">
-            <b>Votar</b>
-        </a>
+      <a href="./index.html">
+          <b>Página Principal</b>
+      </a>     
+      <a href="./personajes/index.html">
+          <b>Personajes</b>
+      </a>     
+      <a href="./universos/index.html">
+          <b>Universos</b>
+      </a>
+      <a href="./localizaciones/index.html">
+          <b>Localizaciones</b>
+      </a>     
+      <a href="./votar/index.html">
+          <b>Votar</b>
+      </a>
     </div>          
+
     <div class="mid" id="main">
-        <div class="info_block large">
-            <h1>
-                <b>Objetivo</b>
-            </h1>
-            <br>
-            <p>
-                sample text
-            </p>
-            <br><hr><br>
-            <h1>
-                <b>Personajes</b>
-            </h1>
-            <br>
-            <p>
-                sample text 
-            </p>
-            <br><hr><br>
-            <h1>
-                <b>Estadísticas</b>
-            </h1>
-            <br>
-            <p>
-                sample text 
-            </p>
-            <br><hr><br>
-            <h1>
-                <b>Votar</b>
-            </h1>
-            <br>
-            <p>
-                sample text 
-            </p>
+      <div class="info_block large">
+        <h1>
+          <b>Objetivo</b>
+        </h1>
+        <br>
+        <p>
+          Encontrar el fandom con la mayor cantidad de fans. 
+        </p>
+        <br><hr><br>
+
+        <h1>
+          <b>Personajes</b>
+        </h1>
+        <br>
+        <p>
+          Todos los personajes que se usaran para las votaciones con un poco de informacion y su imagen.
+        </p>
+        <br><hr><br>
+
+        <h1>
+          <b>Universos</b>
+        </h1>
+        <br>
+        <p>
+          El punto mas importante de la pagina. Se tendran algunos universos conocidos y se le dara la opcion a los usuarios de borrar, agregar o modificar universos. Solo se podran agregar personajes y lugares de los universos que se encuentren agregados. El borrar un universo tambien borra todos los personajes y lugarles vinculados a dicho universo.
+        </p>
+        <br><hr><br>
+
+        <h1>
+          <b>Localizaciones</b>
+        </h1>
+        <br>
+        <p>
+          Habran lugares de diferentes universos de series, animes, peliculas, etc. Estos los pueden agregar los usuarios.
+        </p>
+        <br><hr><br>
+
+        <h1>
+          <b>Votar</b>
+        </h1>
+        <br>
+        <p>
+          Se haran duelos en la forma de votaciones escogiendo 2 personajes aleatorios y dandole a los usuarios la opcion de votar por el que les guste mas.
+        </p>
+      </div>
+
+      <div class="img_block small">
+        <h2>
+          <b>Personaje Destacado</b>
+        </h2>
+        <br><hr><br>
+
+        <div class="frame">
+          <img id="imagen-personaje" src="" alt="Personaje">
         </div>
-        <div class="img_block small">
-            <h2>
-                <b>Personaje Destacado</b>
-            </h2>
-            <br><hr><br>
-            <div class="frame">
-                <img src="https://fotografias-neox.atresmedia.com/clipping/cmsimages01/2022/03/04/6F3E2E33-8AAF-4607-8B3E-80261F00FB86/naruto_104.jpg?crop=1080,1080,x419,y0&width=1200&height=1200&optimize=low&format=webply" alt="Naruto">
-            </div>
-            <br><hr><br>
-            <h4 id="first">
-                Nombre
-            </h4>
-            <p>
-                Naruto Uzumaki
-            </p>
-            <h4>
-                Serie
-            </h4>
-            <p>
-                Naruto
-            </p>
-            <h4>
-                Ataque Principal
-            </h4>
-            <p>
-                Rasengan
-            </p>
-            <h4>
-                Descripción
-            </h4>
-            <p>
-                sample text
-            </p>
-        </div>
+        <br><hr><br>
+
+        <h4 
+          id="first">Nombre
+        </h4>
+        <p id="nombre-personaje"></p>
+
+        <h4>
+          Universo
+        </h4>
+        <p id="serie-personaje"></p>
+
+        <h4>
+          Ataque Principal
+        </h4>
+        <p id="poder-personaje"></p>
+
+        <h4>
+          Descripción
+        </h4>
+        <p id="descripcion-personaje"></p>
+      </div>
     </div>
-</body>
+
+    <script src="main.js"></script>
+  </body>
 </html>

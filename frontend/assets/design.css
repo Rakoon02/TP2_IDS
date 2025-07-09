@@ -5,6 +5,7 @@
     --background-terciary-color: #d5d2d9;
     --object-background-color:#6aa61f;
     --object-secondary-background-color: #3f7d20;
+    --object-terciary-background-color: #2f5f17;
     --font-color: #0d0a0b;
 }
 *{
@@ -13,7 +14,7 @@
 }
 body{
     height: 100%;
-    width: 100%;
+    width: 100vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--background-color);
 }
@@ -62,12 +63,16 @@ body{
     cursor: pointer;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
+.top_bar a:active{
+    transform: scale(0.9);
+    background-color: var(--object-terciary-background-color);
+    transition-duration: 0s;
+}
 /*#endregion*/
 
 /*INFO BLOCK*/
 /*#region*/
 .info_block{
-    height: 100%;
     margin: 1.25%;
     padding: 2%;
     border-radius: 15px;
@@ -220,6 +225,179 @@ body{
     transition-duration: 0s;
 }
 /*#endregion*/
+
+/*list_page*/
+/*#region*/
+.list_page{
+    width: 90%;
+}
+/*top_list*/
+/*#region*/
+.top_list{
+    width: 100%;
+    height: 25%;
+    max-height: 75px;
+    margin: 0;
+    padding: 1.25%;
+    border: none;
+    position: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    color: var(--font-color);
+}
+.top_list .title{
+    font-size: x-large;
+}
+.top_list .add_delete_update_buttons{
+    width: 15%;
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.top_list .add_delete_update_buttons a{
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--object-background-color);
+    color: var(--font-color);
+    font-size: medium;
+    text-decoration: none;
+    transition-duration: 0.25s;
+}
+.top_list .add_delete_update_buttons a:hover{
+    background-color: var(--object-secondary-background-color);
+    color: white;
+    cursor: pointer;
+}
+.top_list .add_delete_update_buttons a:active{
+    transform: scale(0.95);
+    background-color: var(--object-terciary-background-color);
+    transition-duration: 0s;
+}
+.top_list .add_delete_update_buttons .add{
+    border-radius: 15px 15px 0px 0px;
+}
+.top_list .add_delete_update_buttons .delete{
+    border-radius: 0 0 0 0;
+}
+.top_list .add_delete_update_buttons .update{
+    border-radius: 0 0 15px 15px;
+}
+/*#endregion*/
+
+/*order_list*/
+/*#region*/
+.order_list{
+    width: 100%;
+    height: 1%;
+    margin: 0;
+    padding: 1.25%;
+    border: none;
+    position: inherit;
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    align-items: start;
+    color: var(--font-color);
+}
+/*#endregion*/
+
+/*display_list*/
+/*#region*/
+.display_list{
+    width: 100%;
+    margin: 0;
+    padding: 1.25%;
+    border: none;
+    position: inherit;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: space-evenly;
+}
+/*#endregion*/
+
+
+
+
+
+
+/*#endregion*/
+
+
+/*pag_principal*/
+/*#region*/
+/*#endregion*/
+
+/*aniadir/eliminar/actualizar subpaginas*/
+/*#region*/
+.mid.add_delete_update_subpage{
+    width: 90%;
+    padding: 2.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mid.add_delete_update_subpage .char_inputs{
+    width: 50%;
+    padding: 1.25%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-secondary-color);
+}
+.mid.add_delete_update_subpage .char_inputs input{
+    width: 100%;
+    height: 25px;
+    font-size: large;
+}
+
+.mid.add_delete_update_subpage .char_inputs select{
+    width: 100%;
+    height: 25px;
+    font-size: large;
+}
+.mid.add_delete_update_subpage button{
+    width: 30%;
+    min-height: 60px;
+    height: 75%;
+    max-height: 70px;
+    margin: 1%;
+    padding: 0;
+    border:none;
+    border-radius: 15px;
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--object-background-color);
+    color: var(--font-color);
+    font-size:xx-large;
+    transition-duration: 0.25s;
+}
+.mid.add_delete_update_subpage button:hover{
+    background-color: var(--object-secondary-background-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+.mid.add_delete_update_subpage button:active{
+    transform: scale(0.8);
+    background-color: var(--object-terciary-background-color);
+    transition-duration: 0s;
+}
+/*#endregion*/
+
+
 
 /*pag_votar*/
 /*#region*/

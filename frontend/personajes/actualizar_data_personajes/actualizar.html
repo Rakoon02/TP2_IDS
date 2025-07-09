@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP2</title>
+        <link rel="stylesheet" href="../../assets/design.css">
+    </head>
+    <body>
+        <div class="top_bar">
+            <a href="../../index.html">
+                <b>Pagina Principal</b>
+            </a>
+            <a href="../index.html">
+                <b>Personajes</b>
+            </a>
+            <a href="../../universos/index.html">
+                <b>Universos</b>
+            </a>
+            <a href="../../localizaciones/index.html">
+                <b>Localizaciones</b>
+            </a> 
+            <a href="../../votar/index.html">
+                <b>Votar</b>
+            </a>
+        </div>
+        <div class="mid add_delete_update_subpage" id="add_character">
+            <h1>
+                <b>Actualizar Información de un Personaje</b>
+            </h1>
+            <p>
+                *obligatorio
+            </p>
+            <br>
+            <div class="char_inputs">
+                <h3>*Selecciona el Personaje</h3>
+                <select id="characterDropdown">
+                    <option value="">Seleccione un personaje...</option>
+                </select>
+                <br>
+                <h3>
+                    *Nombre del Personaje
+                </h3>
+                <input type="text" class="name" maxlength="99">
+                <br>
+                <label for="character_universe"><h3>*Universo del Personaje</h3></label>
+                    <select name="criteria" id="universe_character">
+                        <option value="0">Dragon Ball</option>
+                        <option value="1">Naruto</option>
+                        <option value="2">Jujutsu Kaisen</option>
+                        <option value="3">My Hero Academia</option>
+                    </select>
+                <br>
+                <h3>
+                    *Poder del Personaje
+                </h3>
+                <input type="number" class="power">
+                <br>
+                <h3>
+                    *Descripcion del Personaje
+                </h3>
+                <input type="text" class="description" maxlength="254">
+                <br>
+                <h3>
+                    Imagen del Personaje
+                </h3>
+                <input type="text" class="image" maxlength="254">
+            </div>
+            <button onclick="update_char()">
+                Actualizar Información Personaje
+            </button>
+        </div>
+    </body>
+</html>

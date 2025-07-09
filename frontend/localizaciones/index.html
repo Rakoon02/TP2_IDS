@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiversus</title>
+  <link rel="stylesheet" href="../assets/design.css">
+</head>
+<body>
+  <div class="top_bar">
+    <a href="../index.html">
+        <b>Pagina Principal</b> 
+    </a>
+    <a href="../personajes/index.html">
+        <b>Personajes</b>
+    </a>
+    <a href="../universos/index.html">
+        <b>Universos</b>
+    </a>
+    <a href="./index.html">
+        <b>Localizaciones</b>
+    </a> 
+    <a href="../votar/index.html">
+        <b>Votar</b>
+    </a>
+  </div>
+
+  <div class="mid" id="localizaciones">
+    <div class="list_page">
+      <div class="top_list">
+        <div class="title">
+          <h1>
+           <b>Localizaciones</b>
+          </h1>
+        </div>
+        <div class="add_delete_update_buttons">
+          <a href="aniadir_locacion.html" class="add">Añadir Localización</a>
+          <a href="borrar_locacion.html" class="delete">Eliminar Localización</a>
+          <a href="actualizar_locacion.html" class="update">Actualizar Localización</a>
+        </div>
+      </div>
+
+      <br><hr><br>
+
+      <div class="order_list">
+        <label for="order_localization">Criterio para Ordenar</label>
+        <select name="criteria" id="order_localization">
+          <option value="alphabet_frontwards">A-Z</option>
+          <option value="alphabet_backwards">Z-A</option>
+          <option value="id">ID</option>
+          <option value="origin">Serie</option>
+        </select>
+      </div>
+
+      <br>
+
+      <div class="display_list" id="lista-localizaciones">
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('http://localhost:3000/api/lugares')
+        .then(res => res.json())
+        .then(lugares => {
+          const container = document.getElementById('lista-localizaciones');
+          container.innerHTML = '';
+
+          lugares.forEach(lugar => {
+            const lugarHTML = `
+              <div class="img_block small">
+                <h2><b>${lugar.nombre}</b></h2>
+                <br><hr><br>
+                <div class="frame">
+                  <img src="${lugar.imagen}" alt="${lugar.nombre}">
+                </div>
+                <br><hr><br>
+                <h4>Serie</h4>
+                <p>${lugar.nombre_universo}</p>
+                <h4>Descripción</h4>
+                <p>${lugar.descripcion}</p>
+              </div>
+            `;
+            container.innerHTML += lugarHTML;
+          });
+        })
+        .catch(err => {
+          console.error('Error al cargar localizaciones:', err);
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP2</title>
+        <link rel="stylesheet" href="../../assets/design.css">
+    </head>
+    <body>
+        <div class="top_bar">
+            <a href="../../index.html">
+                <b>Pagina Principal</b>
+            </a>
+            <a href="../index.html">
+                <b>Personajes</b>
+            </a>
+            <a href="../../universos/index.html">
+                <b>Universos</b>
+            </a>
+            <a href="../../localizaciones/index.html">
+                <b>Localizaciones</b>
+            </a> 
+            <a href="../../votar/index.html">
+                <b>Votar</b>
+            </a>
+        </div>
+        <div class="mid add_delete_update_subpage" id="delete_character">
+            <h1>
+                <b>Borrar Personaje</b>
+            </h1>
+            <br>
+            <div class="char_inputs">
+                <h3>*Selecciona el Personaje</h3>
+                <select id="characterDropdown">
+                    <option value="">Seleccione un personaje...</option>
+                </select>
+                <br>
+            </div>
+            <button onclick="delete_char()">
+                Eliminar Personaje
+            </button>
+        </div>
+        <script>
+            const personajesBackendURL = "http://localhost:3000/api/personajes/";
+        </script>
+    </body>
+</html>
