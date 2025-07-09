@@ -24,4 +24,15 @@ router.get('/aleatorio', async (req, res) => {
   }
 });
 
+app.delete('api/lugares/:id', (req, res) => {
+    const id = req.params.id;
+    pool.query('DELETE FROM personajes WHERE id = $1', [id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Error al eliminar personaje");
+        }
+        res.send("Personaje eliminado");
+    });
+});
+
 module.exports = router;
