@@ -24,7 +24,7 @@ router.get('/aleatorio', async (req, res) => {
   }
 });
 
-app.delete('api/personajes/:id'', (req, res) => {
+router.delete('api/personajes/:id', (req, res) => {
   const id = req.params.id;
   pool.query('DELETE FROM personajes WHERE id = $1', [id], (err, result) => {
     if (err) {
