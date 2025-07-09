@@ -24,4 +24,15 @@ router.get('/aleatorio', async (req, res) => {
   }
 });
 
+router.delete('api/lugares/:id', (req, res) => {
+    const id = req.params.id;
+    pool.query('DELETE FROM lugares WHERE id = $1', [id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Error al eliminar lugar.");
+        }
+        res.send("Lugar eliminado");
+    });
+});
+
 module.exports = router;
