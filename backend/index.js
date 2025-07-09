@@ -77,18 +77,17 @@ app.get('/api/personajes/origen/:origen_id', async (req, res) => {
     }
 });
 
-//Post un personaje
+
 app.post('/api/personajes/', async (req, res) => {
     if (!req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
     const personaje = await createPersonaje(req.body.nombre, req.body.origen_id, req.body.descripcion, req.body.poder, req.body.imagen);
-    if(result.rowCount === 0) {
-        return undefined;
-    } else {
-        return result.rows[0];
+    if(!personaje) {
+        return res.status(500).json({ error: 'Error al crear el universo' });
     }
+    res.json(personaje);
 });
 
 //Delete un personaje
