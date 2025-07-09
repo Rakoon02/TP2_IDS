@@ -237,10 +237,10 @@ app.put('/api/lugares/', async (req, res) => {
 
 //crear un duelo (con resultado)
 app.post('/api/votaciones/', async (req, res) => {
-    if (!req.body.id_pj1 || !req.body.id_pj2 || !req.body.fecha || !req.body.lugar_id || !ganador_id) {
+    if (!req.body.id_pj1 || !req.body.id_pj2 || !req.body.fecha || !req.body.lugar_id || !req.body.ganador_id) {
         return res.status(400).json({ error: 'Error al votar, faltan datos' });
     }
-    const votacion = await createVotacion(req.body.id_pj1, req.body.id_pj2, req.body.fecha, req.body.lugar_id, ganador_id);
+    const votacion = await createVotacion(req.body.id_pj1, req.body.id_pj2, req.body.fecha, req.body.lugar_id, req.body.ganador_id);
     if(!votacion) {
         return res.status(500).json({ error: 'Error al crear la votacion' });;
     } else {
