@@ -1,6 +1,6 @@
 function add_char() {
     const name = document.querySelector(".name").value;
-    const universe = document.getElementById("universe_character").value;
+    const universe = document.getElementById("characterDropdown").value;
     const power = document.querySelector(".power").value;
     const description = document.querySelector(".description").value;
     const image = document.querySelector(".image").value;
@@ -12,9 +12,9 @@ function add_char() {
 
     const personaje = {
         nombre: name,
-        universo: parseInt(universe),
-        poder: parseInt(power),
+        origen_id: parseInt(universe),
         descripcion: description,
+        poder: power,
         imagen: image
     };
 
