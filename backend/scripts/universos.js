@@ -1,3 +1,4 @@
+
 const pool = require('../base_de_datos');
 
 async function getAllUniversos()
@@ -9,6 +10,7 @@ async function getAllUniversos()
 async function getOneUniverso(id)
 {
     const result = await pool.query('SELECT * FROM universos WHERE id = $1 LIMIT 1', [id]);    
+
     return result.rows[0];
 }
 

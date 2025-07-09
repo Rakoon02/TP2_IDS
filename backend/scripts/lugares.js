@@ -1,3 +1,4 @@
+
 const pool = require('../base_de_datos');
 
 async function getAllLugares()
@@ -14,6 +15,7 @@ async function getOneLugar(id)
 
 async function getLugaresByOrigen(origen_id)
 {
+
     const result = await pool.query('SELECT lugares.*,universos.nombre AS nombre_universo FROM lugares JOIN universos ON lugares.origen_id = universos.id WHERE lugares.origen_id = $1', [origen_id]);
     return result.rows;
 }

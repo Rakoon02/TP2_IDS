@@ -21,6 +21,7 @@ async function getOnePersonaje(id)
 
 async function createPersonaje(nombre, origen_id, descripcion, poder, imagen)
 {
+
     const result = await pool.query('INSERT INTO personajes (nombre, origen_id, descripcion, poder, imagen) VALUES ($1, $2, $3, $4, $5) RETURNING *', [nombre, origen_id, descripcion, poder, imagen]);
     if(result.rowCount === 0)
     {
@@ -34,7 +35,9 @@ async function createPersonaje(nombre, origen_id, descripcion, poder, imagen)
 
 async function deletePersonaje(id)
 {
+
     const result = await pool.query('DELETE FROM personajes WHERE id = $1', [id]);
+
     if(result.rowCount === 0)
     {
         return undefined;
@@ -47,7 +50,9 @@ async function deletePersonaje(id)
 
 async function updatePersonaje(id, nombre, origen_id, descripcion, poder, imagen)
 {
+
     const result = await pool.query('UPDATE personajes SET nombre = $1, origen_id = $2, descripcion = $3, poder = $4, imagen = $5 WHERE id = $6 RETURNING *', [nombre, origen_id, descripcion, poder, imagen, id]);
+
     if(result.rowCount === 0)
     {
         return undefined;

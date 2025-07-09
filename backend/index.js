@@ -9,14 +9,12 @@ const path = require('path');
 
 app.use(express.json());
 app.use(cors());
-
 app.use('/api/personajes', personajesRuta);
 app.use('/api/lugares', lugaresRuta);
-
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-app.get('/test-database', async (req,res) => {
-	try{
+app.get('/test-database', async (req, res) => {
+  try {
     const result = await pool.query('SELECT NOW()');
     res.json({ success: true, time: result.rows[0].now });
     } catch (error) {
@@ -95,6 +93,7 @@ app.post('/api/personajes/', async (req, res) => {
 app.delete('/api/personajes/:id', async (req, res) => {
     const result = await deletePersonaje(req.params.id);
     if (result.rowCount === 0) {
+
         return res.status(404).json({ error: 'Personaje no encontrado' });
     }
     res.json({ status: 'OK' });
@@ -102,7 +101,7 @@ app.delete('/api/personajes/:id', async (req, res) => {
     const personaje = await deletePersonaje(req.params.id);
 
     if (!personaje) {
-        return res.status(404).json({ error: 'Personaje id: ' + req.params.id + 'no ecntrado' });
+        return res.status(404).json({ error: 'Personaje id: ' + req.params.id + 'no econtrado' });
     }
     res.json({ status: 'OK' });
 });

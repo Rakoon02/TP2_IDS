@@ -1,0 +1,4 @@
+node_modules/
+psql_data
+backend/base_de_datos.js
+backend/docker-compose.yml
