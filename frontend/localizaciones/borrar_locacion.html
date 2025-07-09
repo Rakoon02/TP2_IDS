@@ -40,5 +40,52 @@
                 Eliminar Localización
             </button>
         </div>
+        <script>
+            const lugaresBackendURL = "http://localhost:3000/api/lugares/";
+            window.onload = async function() {
+            try {
+                const response = await fetch(lugaresBackendURL);
+                const lugares = await response.json();
+                const dropdown = document.getElementById("characterDropdown");
+
+                lugares.forEach(l => {
+                    const option = document.createElement("option");
+                    option.value = l.id;  
+                    option.textContent = l.nombre;
+                    dropdown.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error cargando lugares:", error);
+            }
+        };
+        async function delete_char() {
+            const dropdown = document.getElementById("characterDropdown");
+            const id = dropdown.value;
+
+            if (!id) {
+                alert("Por favor, selecciona un lugar.");
+                return;
+            }
+
+            const confirmacion = confirm("¿Estás seguro de que deseas eliminar este lugar?");
+            if (!confirmacion) return;
+
+            try {
+                const response = await fetch(lugaresBackendURL + id, {
+                    method: "DELETE"
+                });
+
+                if (!response.ok) {
+                    throw new Error("Error al eliminar el lugar.");
+                }
+
+                alert("Lugar eliminado correctamente.");
+                location.reload(); 
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Ocurrió un error al eliminar el lugar.");
+            }
+        }
+        </script>
     </body>
 </html>
