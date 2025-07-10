@@ -25,7 +25,7 @@ async function sendVote(id_pj1, id_pj2, fecha, lugar_id, ganador_id) {
 
 //id_pj1, id_pj2, fecha, lugar_id, ganador_id
 
-function vote_char_1()
+async function vote_char_1()
 {
     if(work_button === true)
     {
@@ -35,12 +35,12 @@ function vote_char_1()
         const fecha = new Date().toISOString();
         const lugar = window.lugar;
         const ganador = window.pj1;
-        sendVote(personaje1, personaje2, fecha, lugar, ganador);
+        await sendVote(personaje1, personaje2, fecha, lugar, ganador);
     }
     location.reload();
 }
 
-function vote_char_2()
+async function vote_char_2()
 {
     if(work_button === true)
     {
@@ -50,7 +50,7 @@ function vote_char_2()
         const fecha = new Date().toISOString();
         const lugar = window.lugar;
         const ganador = window.pj2;
-        sendVote(personaje1, personaje2, fecha, lugar, ganador);
+        await sendVote(personaje1, personaje2, fecha, lugar, ganador);
     }
     location.reload();
 }
