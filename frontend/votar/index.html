@@ -53,9 +53,10 @@
                         </b>
                     </h2>
                     <br>
-                    <p id="localizacion-combate">
-                        
-                    </p>
+                    <p id="localizacion-combate"></p>
+                    <div id="localizacion-imagen">
+                        <img src="https://wallpapers.com/images/featured/konoha-kwldytpkkc1uo4qb.jpg" alt="Imagen de la localización" id="imagen-localizacion">
+                    </div>
                     <br><hr><br>
                     <div class="vote_char_section" id="char_1">
                         <h2>
@@ -113,6 +114,8 @@
 	        .then(res => res.json())
 	        .then(lugar => {
 		    document.getElementById('localizacion-combate').innerText = lugar.nombre;
+            document.getElementById('imagen-localizacion').src = lugar.imagen;
+            document.getElementById('imagen-localizacion').alt = lugar.nombre;
             })
 	        .catch(err => {
 		    console.error("Error al cargar la localizacion:", err);
