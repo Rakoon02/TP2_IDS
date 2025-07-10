@@ -1,4 +1,4 @@
-function add_char() {
+async function add_char() {
     const name = document.querySelector(".name").value;
     const universe = document.getElementById("characterDropdown").value;
     const power = document.querySelector(".power").value;
