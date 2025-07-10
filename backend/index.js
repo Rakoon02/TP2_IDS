@@ -146,7 +146,7 @@ app.post('/api/universos/', async (req, res) => {
         if (!universo) {
             return res.status(500).json({ error: 'Error al crear el universo' });
         }
-        return res.status(201).json(universo); // ✅ Se añadió esta línea
+        return res.status(201).json(universo); 
     } catch (error) {
         console.error("Error al crear universo:", error);
         return res.status(500).json({ error: 'Error interno del servidor' });
