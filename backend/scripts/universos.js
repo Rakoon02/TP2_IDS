@@ -14,16 +14,21 @@ async function getOneUniverso(id)
     return result.rows[0];
 }
 
-async function createUniverso(nombre, creador, fecha, descripcion, pais)
-{
-    const result = await pool.query('INSERT INTO universos (nombre, creador, fecha, descripcion, pais) VALUES ($1, $2, $3, $4, $5) RETURNING *', [nombre, creador, fecha, descripcion, pais]);
-    if(result.rowCount === 0)
-    {
+async function createUniverso(nombre, creador, fecha, descripcion, imagen) {
+    try {
+        const result = await pool.query(
+            'INSERT INTO universos (nombre, creador, fecha, descripcion, imagen) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [nombre, creador, fecha, descripcion, imagen]
+        );
+        
+        if (result.rowCount === 0) {
+            return undefined;
+        } else {
+            return result.rows[0];
+        }
+    } catch (error) {
+        console.error('Error en createUniverso:', error);
         return undefined;
-    }
-    else 
-    {
-        return result.rows[0];
     }
 }
 
