@@ -41,34 +41,67 @@
                 <h3>
                     *Nombre del Personaje
                 </h3>
-                <input type="text" class="name" maxlength="99">
+                <input type="text" class="nombre" maxlength="99">
                 <br>
-                <label for="character_universe"><h3>*Universo del Personaje</h3></label>
-                    <select name="criteria" id="universe_character">
-                        <option value="0">Dragon Ball</option>
-                        <option value="1">Naruto</option>
-                        <option value="2">Jujutsu Kaisen</option>
-                        <option value="3">My Hero Academia</option>
-                    </select>
+                <label><h3>*Universo del Personaje</h3></label>
+                    <select id="universeDropdown">Seleccione un universo..
+                        <option value="">Seleccione un universo...</option>
+                    .<select>
                 <br>
                 <h3>
                     *Poder del Personaje
                 </h3>
-                <input type="number" class="power">
+                <input type="text" class="poder">
                 <br>
                 <h3>
                     *Descripcion del Personaje
                 </h3>
-                <input type="text" class="description" maxlength="254">
+                <input type="text" class="descripcion" maxlength="254">
                 <br>
                 <h3>
                     Imagen del Personaje
                 </h3>
-                <input type="text" class="image" maxlength="254">
+                <input type="text" class="imagen" maxlength="254">
             </div>
             <button onclick="update_char()">
                 Actualizar Información Personaje
             </button>
         </div>
+        <script src="actualizar_personajes.js"></script>
+        <script>
+        const personajesURL = "http://localhost:3000/api/personajes/";
+        const universosURL = "http://localhost:3000/api/universos/";
+
+        window.onload = async function() {
+            try {
+                const personajesResponse = await fetch(personajesURL);
+                const personajes = await personajesResponse.json();
+                const personajesDropdown = document.getElementById("characterDropdown");
+
+                personajes.forEach(p => {
+                    const option = document.createElement("option");
+                    option.value = p.id;
+                    option.textContent = p.nombre;
+                    personajesDropdown.appendChild(option);
+                });
+
+                const universosResponse = await fetch(universosURL);
+                const universos = await universosResponse.json();
+                const universosDropdown = document.getElementById("universeDropdown");
+
+                universosDropdown.innerHTML = "";
+
+                universos.forEach(u => {
+                    const option = document.createElement("option");
+                    option.value = u.id;
+                    option.textContent = u.nombre;
+                    universosDropdown.appendChild(option);
+                });
+
+            } catch (error) {
+                console.error("Error cargando datos:", error);
+            }
+        };
+        </script>
     </body>
 </html>
