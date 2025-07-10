@@ -76,7 +76,9 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error("Error al eliminar el personaje.");
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText}`)
+                    //throw new Error("Error al eliminar el personaje.");
                 }
 
                 alert("Personaje eliminado correctamente.");

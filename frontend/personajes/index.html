@@ -32,10 +32,10 @@
 
         <div class="order_list">
           <label for="order_characters">Criterio para Ordenar</label>
-          <select name="criteria" id="order_characters">
+          <select name="criteria" id="order_characters" onchange="orderPersonajes()">
+            <option value="id">ID</option>
             <option value="alphabet_frontwards">A-Z</option>
             <option value="alphabet_backwards">Z-A</option>
-            <option value="id">ID</option>
             <option value="origin">Serie</option>
           </select>
         </div>
@@ -49,13 +49,15 @@
     </div>
 
     <script>
+      let lista_personajes = [];
+
       window.addEventListener('DOMContentLoaded', () => {
         fetch('http://localhost:3000/api/personajes')
           .then(res => res.json())
           .then(personajes => {
             const container = document.getElementById('lista-personajes');
             container.innerHTML = '';
-
+            lista_personajes = personajes;
             personajes.forEach(p => {
               const personajeHTML = `
                 <div class="img_block small">
@@ -77,9 +79,57 @@
             });
           })
           .catch(err => {
-            console.error('Error al cargar personajes:', err);
           });
       });
+
+      function orderPersonajes()
+      {
+        const criterio_de_ordenamiento = document.getElementById("order_characters").value;
+
+        if(criterio_de_ordenamiento === "alphabet_frontwards")
+        {
+           lista_personajes.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        }
+        else if(criterio_de_ordenamiento === "alphabet_backwards")
+        {
+           lista_personajes.sort((a, b) => b.nombre.localeCompare(a.nombre));
+        }
+        else if(criterio_de_ordenamiento === "id")
+        {
+           lista_personajes.sort((a, b) => a.id - b.id);
+        }
+        else if(criterio_de_ordenamiento === "origin")
+        {
+           lista_personajes.sort((a, b) => a.nombre_universo.localeCompare(b.nombre_universo));
+        }
+        reordenarPersonajes();
+      }
+
+      function reordenarPersonajes()
+      {
+        const container = document.getElementById('lista-personajes');
+            container.innerHTML = '';
+            lista_personajes.forEach(p => {
+              const personajeHTML = `
+                <div class="img_block small">
+                  <h2><b>${p.nombre}</b></h2>
+                  <br><hr><br>
+                  <div class="frame">
+                    <img src="${p.imagen}" alt="${p.nombre}">
+                  </div>
+                  <br><hr><br>
+                  <h4>Serie</h4>
+                  <p>${p.nombre_universo}</p>
+                  <h4>Ataque Principal</h4>
+                  <p>${p.poder}</p>
+                  <h4>Descripción</h4>
+                  <p>${p.descripcion}</p>
+                </div>
+              `;
+              container.innerHTML += personajeHTML;
+            });
+      };
+
     </script>
   </body>
 </html>

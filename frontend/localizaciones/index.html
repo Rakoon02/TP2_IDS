@@ -44,10 +44,10 @@
 
       <div class="order_list">
         <label for="order_localization">Criterio para Ordenar</label>
-        <select name="criteria" id="order_localization">
+        <select name="criteria" id="order_localization" onchange="orderLugares()">
+          <option value="id">ID</option>
           <option value="alphabet_frontwards">A-Z</option>
           <option value="alphabet_backwards">Z-A</option>
-          <option value="id">ID</option>
           <option value="origin">Serie</option>
         </select>
       </div>
@@ -61,13 +61,14 @@
   </div>
 
   <script>
+    let lista_lugares = [];
     window.addEventListener('DOMContentLoaded', () => {
       fetch('http://localhost:3000/api/lugares')
         .then(res => res.json())
         .then(lugares => {
           const container = document.getElementById('lista-localizaciones');
           container.innerHTML = '';
-
+          lista_lugares = lugares;
           lugares.forEach(lugar => {
             const lugarHTML = `
               <div class="img_block small">
@@ -90,6 +91,53 @@
           console.error('Error al cargar localizaciones:', err);
         });
     });
+
+    function orderLugares()
+      {
+        const criterio_de_ordenamiento = document.getElementById("order_localization").value;
+
+        if(criterio_de_ordenamiento === "alphabet_frontwards")
+        {
+           lista_lugares.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        }
+        else if(criterio_de_ordenamiento === "alphabet_backwards")
+        {
+           lista_lugares.sort((a, b) => b.nombre.localeCompare(a.nombre));
+        }
+        else if(criterio_de_ordenamiento === "id")
+        {
+           lista_lugares.sort((a, b) => a.id - b.id);
+        }
+        else if(criterio_de_ordenamiento === "origin")
+        {
+           lista_lugares.sort((a, b) => a.nombre_universo.localeCompare(b.nombre_universo));
+        }
+        reordenarLugares();
+      }
+
+      function reordenarLugares()
+      {
+        const container = document.getElementById('lista-localizaciones');
+            container.innerHTML = '';
+            lista_lugares.forEach(lugar => {
+              const lugarHTML = `
+                <div class="img_block small">
+                <h2><b>${lugar.nombre}</b></h2>
+                <br><hr><br>
+                <div class="frame">
+                  <img src="${lugar.imagen}" alt="${lugar.nombre}">
+                </div>
+                <br><hr><br>
+                <h4>Serie</h4>
+                <p>${lugar.nombre_universo}</p>
+                <h4>Descripción</h4>
+                <p>${lugar.descripcion}</p>
+              </div>
+              `;
+              container.innerHTML += lugarHTML;
+            });
+      };
+
   </script>
 </body>
 </html>
