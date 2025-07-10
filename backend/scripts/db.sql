@@ -1,4 +1,4 @@
-CREATE TABLE universos (
+CREATE TABLE IF NOT EXISTS universos (
     id serial primary key,
     nombre varchar(100) NOT NULL UNIQUE,
     creador varchar(100) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE universos (
     imagen varchar(255)
 );
 
-CREATE TABLE personajes (
+CREATE TABLE IF NOT EXISTS personajes (
     id serial primary key,
     nombre varchar(100) NOT NULL,
     origen_id int REFERENCES universos(id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -17,17 +17,17 @@ CREATE TABLE personajes (
 );
 
 
-CREATE TABLE lugares (
+CREATE TABLE IF NOT EXISTS lugares (
     id serial primary key,
     nombre varchar(100) NOT NULL UNIQUE,
     descripcion varchar(255) NOT NULL,
     origen_id int REFERENCES universos(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    tipo varchar(100),    
+    tipo varchar(100) NOT NULL,    
     imagen varchar(255)
 );
 
 
-CREATE TABLE duelo (
+CREATE TABLE IF NOT EXISTS duelo (
     id serial primary key,
     personaje1_id int REFERENCES personajes (id) ON DELETE CASCADE ON UPDATE CASCADE,
     personaje2_id int REFERENCES personajes (id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -37,7 +37,7 @@ CREATE TABLE duelo (
 );
 
 
-CREATE TABLE estadisticas (
+CREATE TABLE IF NOT EXISTS estadisticas (
     personaje_id int REFERENCES personajes (id) ON DELETE CASCADE ON UPDATE CASCADE,
     duelos_participados int default 0,
     duelos_ganados int default 0,

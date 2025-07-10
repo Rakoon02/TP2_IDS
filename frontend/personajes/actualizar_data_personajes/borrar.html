@@ -42,6 +42,52 @@
         </div>
         <script>
             const personajesBackendURL = "http://localhost:3000/api/personajes/";
+            window.onload = async function() {
+            try {
+                const response = await fetch(personajesBackendURL);
+                const personajes = await response.json();
+                const dropdown = document.getElementById("characterDropdown");
+
+                personajes.forEach(p => {
+                    const option = document.createElement("option");
+                    option.value = p.id;  
+                    option.textContent = p.nombre;
+                    dropdown.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error cargando personajes:", error);
+            }
+        };
+        async function delete_char() {
+            const dropdown = document.getElementById("characterDropdown");
+            const id = dropdown.value;
+
+            if (!id) {
+                alert("Por favor, selecciona un personaje.");
+                return;
+            }
+
+            const confirmacion = confirm("¿Estás seguro de que deseas eliminar este personaje?");
+            if (!confirmacion) return;
+
+            try {
+                const response = await fetch(personajesBackendURL + id, {
+                    method: "DELETE"
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText}`)
+                    //throw new Error("Error al eliminar el personaje.");
+                }
+
+                alert("Personaje eliminado correctamente.");
+                location.reload();  // Recarga la página
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Ocurrió un error al eliminar el personaje.");
+            }
+        }
         </script>
     </body>
 </html>

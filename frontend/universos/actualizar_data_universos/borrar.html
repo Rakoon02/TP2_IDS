@@ -1,36 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiversus - Eliminar Universo</title>
-  <link rel="stylesheet" href="../../assets/design.css">
-</head>
-<body>
-  <div class="top_bar">
-    <a href="../../index.html"><b>Página Principal</b></a>
-    <a href="../../personajes/index.html"><b>Personajes</b></a>
-    <a href="../index.html"><b>Universos</b></a>
-    <a href="../../localizaciones/index.html"><b>Localizaciones</b></a>
-    <a href="../../votar/index.html"><b>Votar</b></a>
-  </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP2</title>
+        <link rel="stylesheet" href="../../assets/design.css">
+    </head>
+    <body>
+         <div class="top_bar">
+            <a href="../../index.html">
+                <b>Pagina Principal</b>
+            </a>
+            <a href="../index.html">
+                <b>Personajes</b>
+            </a>
+            <a href="../../universos/index.html">
+                <b>Universos</b>
+            </a>
+            <a href="../../localizaciones/index.html">
+                <b>Localizaciones</b>
+            </a> 
+            <a href="../../votar/index.html">
+                <b>Votar</b>
+            </a>
+        </div>
+        <div class="mid add_delete_update_subpage" id="delete_character">
+            <h1>
+                <b>Borrar Universo</b>
+            </h1>
+            <br>
+            <div class="char_inputs">
+                <h3>*Seleccione el Universo</h3>
+                <select id="characterDropdown">
+                    <option value="">Seleccione el Universo ...</option>
+                </select>
+                <br>
+            </div>
+            <button onclick="delete_char()">
+                Eliminar Universo
+            </button>
+        </div>
+        <script>
+            const universosBackendURL = "http://localhost:3000/api/universos/";
+            window.onload = async function() {
+            try {
+                const response = await fetch(universosBackendURL);
+                const universos = await response.json();
+                const dropdown = document.getElementById("characterDropdown");
 
-  <div class="mid add_delete_update_subpage" id="delete_universo">
-    <h1>
-        <b>Borrar Universo</b>
-    </h1>
-    <br>
-    <div class="char_inputs">
-      <h3>
-        *Selecciona el Universo
-      </h3>
-      <select id="universoDropdown">
-        <option value="">Seleccione un Universo...</option>
-      </select>
-      <br>
-    </div>
+                universos.forEach(u => {
+                    const option = document.createElement("option");
+                    option.value = u.id;  
+                    option.textContent = u.nombre;
+                    dropdown.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error cargando universos:", error);
+            }
+        };
+        async function delete_char() {
+            const dropdown = document.getElementById("characterDropdown");
+            const id = dropdown.value;
 
-    <button>Eliminar Universo</button>
-  </div>
-</body>
+            if (!id) {
+                alert("Por favor, selecciona un universo.");
+                return;
+            }
+
+            const confirmacion = confirm("¿Estás seguro de que deseas eliminar este universo?");
+            if (!confirmacion) return;
+
+            try {
+                const response = await fetch(universosBackendURL + id, {
+                    method: "DELETE"
+                });
+
+                if (!response.ok) {
+                    throw new Error("Error al eliminar el universo.");
+                }
+
+                alert("Universo eliminado correctamente.");
+                location.reload(); 
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Ocurrió un error al eliminar el universo.");
+            }
+        }
+        </script>
+    </body>
 </html>
