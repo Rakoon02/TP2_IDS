@@ -1,4 +1,4 @@
-.PHONY: start-db start-backend start-frontend 
+.PHONY: start-db start-backend start-frontend run stop
 
 
 start-db:
@@ -12,3 +12,4 @@ start-frontend:
 	cd ./backend && docker compose up -d frontend
 
 run: start-db start-backend start-frontend
+stop: cd ./backend && docker compose down
