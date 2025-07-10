@@ -35,14 +35,3 @@ CREATE TABLE IF NOT EXISTS duelo (
     lugar_id INT REFERENCES lugares(id) ON DELETE CASCADE ON UPDATE CASCADE,
     ganador_id int REFERENCES personajes(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
-CREATE TABLE IF NOT EXISTS estadisticas (
-    personaje_id int REFERENCES personajes (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    duelos_participados int default 0,
-    duelos_ganados int default 0,
-    duelos_perdidos int default 0,
-    porcentaje_victoria decimal(5,2) default 0.00
-);
-
-
