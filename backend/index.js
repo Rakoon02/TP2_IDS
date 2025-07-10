@@ -51,6 +51,10 @@ const {
     getLugaresByOrigen
 } = require('./scripts/lugares');
 
+const {
+    createVotacion
+} = require('./scripts/votaciones');
+
 //Get todos los personajes
 app.get('/api/personajes/', async (req, res) => {
     const personajes = await getAllPersonajes();
@@ -85,7 +89,9 @@ app.post('/api/personajes/', async (req, res) => {
 
     const personaje = await createPersonaje(req.body.nombre, req.body.origen_id, req.body.descripcion, req.body.poder, req.body.imagen);
     if(!personaje) {
-        return res.status(500).json({ error: 'Error al crear el universo' });
+        return res.status(500).json({ error: 'Error al crear el personaje' });
+    } else {
+        return res.json(personaje);
     }
     res.json(personaje);
 });
@@ -248,6 +254,20 @@ app.put('/api/lugares/', async (req, res) => {
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
+
+//crear un duelo (con resultado)
+app.post('/api/votaciones/', async (req, res) => {
+    if (!req.body.id_pj1 || !req.body.id_pj2 || !req.body.fecha || !req.body.lugar_id || !req.body.ganador_id) {
+        return res.status(400).json({ error: 'Error al votar, faltan datos' });
+    }
+    const votacion = await createVotacion(req.body.id_pj1, req.body.id_pj2, req.body.fecha, req.body.lugar_id, req.body.ganador_id);
+    if(!votacion) {
+        return res.status(500).json({ error: 'Error al crear la votacion' });;
+    } else {
+        return res.json(votacion);
+    }
+});
+
 
 app.listen(PORT, () => {
 	console.log(`Servidor corriendo en http://localhost:${PORT}`);

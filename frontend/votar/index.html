@@ -62,7 +62,7 @@
                         <h2>
                             <b>Personaje 1</b>
                         </h2>
-                        <button>
+                        <button onclick="vote_char_1()">
                             ￩
                         </button>
                     </div>
@@ -71,7 +71,7 @@
                         <h2>
                             <b>Personaje 2</b>
                         </h2>
-                        <button>
+                        <button onclick="vote_char_2()">
                             ￫
                         </button>
                     </div>
@@ -95,8 +95,8 @@
             </div>
         </div>
         <script>
-            let pj1 = 0;
-            let pj2 = 0;
+            window.pj1 = 0;
+            window.pj2 = 0;
             window.addEventListener('DOMContentLoaded', () => {
 	        fetch('http://localhost:3000/api/personajes/aleatorio')
 	        .then(res => res.json())
@@ -113,6 +113,7 @@
 	        fetch('http://localhost:3000/api/lugares/aleatorio')
 	        .then(res => res.json())
 	        .then(lugar => {
+            window.lugar = lugar.id;
 		    document.getElementById('localizacion-combate').innerText = lugar.nombre;
             document.getElementById('imagen-localizacion').src = lugar.imagen;
             document.getElementById('imagen-localizacion').alt = lugar.nombre;
@@ -138,5 +139,5 @@
 	        });
             });
         </script>
-    </body>
+        <script src="../script_botones/botones_votar.js"></script>
 </html>
