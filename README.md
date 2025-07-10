@@ -17,17 +17,11 @@ Este es el TP integrador de la materia, el proyecto consiste en una página web 
 
 #### Para levantar el backend del proyecto, correr:
 ```
-make run-backend
+make run
 ```
 
-#### Para levantar solo la base de datos, correr:
+#### Para parar el proyecto, correr:
 
 ```
-make start-db
-```
-
-#### Para parar la base de datos del proyecto, correr:
-
-```
-make stop-db
+make stop
 ```
