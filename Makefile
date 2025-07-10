@@ -12,5 +12,6 @@ start-frontend:
 	cd ./backend && docker compose up -d frontend
 
 run: start-db start-backend start-frontend
+
 stop: 
 	cd ./backend && docker compose down
