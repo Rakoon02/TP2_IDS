@@ -6,14 +6,12 @@ const cors = require('cors');
 const personajesRuta = require('./rutas/personajes');
 const lugaresRuta = require('./rutas/lugares');
 const universosRuta = require('./rutas/universos');
-const path = require('path');
 
 app.use(express.json());
 app.use(cors());
 app.use('/api/universos', universosRuta);
 app.use('/api/personajes', personajesRuta);
 app.use('/api/lugares', lugaresRuta);
-app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.get('/test-database', async (req, res) => {
   try {
