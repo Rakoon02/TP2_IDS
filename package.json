@@ -1,0 +1,31 @@
+{
+  "name": "multiversus",
+  "version": "1.0.0",
+  "description": "Pagina Web para TP2",
+  "main": "index.js",
+  "scripts": {
+    "dev": "http-server -p 4000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rakoon02/TP2_IDS.git"
+  },
+  "keywords": [
+    "Javascript"
+  ],
+  "author": "oscar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rakoon02/TP2_IDS/issues"
+  },
+  "homepage": "https://github.com/Rakoon02/TP2_IDS#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.10"
+  }
+}
