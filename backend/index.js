@@ -110,7 +110,7 @@ app.delete('/api/personajes/:id', async (req, res) => {
 
 //Update un personaje
 app.put('/api/personajes/', async (req, res) => {
-    if (!req.body.id || !req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder) {
+    if (!req.body.id || !req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder || !req.body.imagen) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
