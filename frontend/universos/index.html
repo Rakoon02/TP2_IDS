@@ -44,10 +44,10 @@
 
         <div class="order_list">
           <label for="order_universos">Criterio para Ordenar</label>
-          <select name="criteria" id="order_universos">
+          <select name="criteria" id="order_universos" onchange="orderUniversos()">
+            <option value="id">ID</option>
             <option value="alphabet_frontwards">A-Z</option>
             <option value="alphabet_backwards">Z-A</option>
-            <option value="id">ID</option>
             <option value="fecha">Fecha</option>
           </select>
         </div>
@@ -61,13 +61,15 @@
     </div>
 
     <script>
+      let lista_universos = [];
+
       window.addEventListener('DOMContentLoaded', () => {
         fetch('http://localhost:3000/api/universos')
           .then(res => res.json())
           .then(universos => {
             const container = document.getElementById('lista-universos');
             container.innerHTML = '';
-
+            lista_universos = universos;
             universos.forEach(u => {
               const universosHTML = `
                 <div class="img_block small">
@@ -92,6 +94,55 @@
             console.error('Error al cargar universos:', err);
           });
       });
+
+      function orderUniversos()
+      {
+        const criterio_de_ordenamiento = document.getElementById("order_universos").value;
+
+        if(criterio_de_ordenamiento === "alphabet_frontwards")
+        {
+           lista_universos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        }
+        else if(criterio_de_ordenamiento === "alphabet_backwards")
+        {
+           lista_universos.sort((a, b) => b.nombre.localeCompare(a.nombre));
+        }
+        else if(criterio_de_ordenamiento === "id")
+        {
+           lista_universos.sort((a, b) => a.id - b.id);
+        }
+        else if(criterio_de_ordenamiento === "fecha")
+        {
+           lista_universos.sort((a, b) => a.fecha.localeCompare(b.fecha));
+        }
+        reordenarUniversos();
+      }
+
+      function reordenarUniversos()
+      {
+        const container = document.getElementById('lista-universos');
+            container.innerHTML = '';
+            lista_universos.forEach(u => {
+              const universosHTML = `
+               <div class="img_block small">
+                  <h2><b>${u.nombre}</b></h2>
+                  <br><hr><br>
+                  <div class="frame">
+                    <img src="${u.imagen}" alt="${u.nombre}">
+                  </div>
+                  <br><hr><br>
+                  <h4>Creador</h4>
+                  <p>${u.creador}</p>
+                  <h4>Fecha</h4>
+                  <p>${u.fecha}</p>
+                  <h4>Descripción</h4>
+                  <p>${u.descripcion}</p>
+                </div>
+              `;
+              container.innerHTML += universosHTML;
+            });
+      };
+
     </script>
   </body>
 </html>
