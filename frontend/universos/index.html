@@ -69,9 +69,13 @@
             container.innerHTML = '';
 
             universos.forEach(u => {
-              const universoHTML = `
+              const universosHTML = `
                 <div class="img_block small">
                   <h2><b>${u.nombre}</b></h2>
+                  <br><hr><br>
+                  <div class="frame">
+                    <img src="${u.imagen}" alt="${u.nombre}">
+                  </div>
                   <br><hr><br>
                   <h4>Creador</h4>
                   <p>${u.creador}</p>
@@ -81,7 +85,7 @@
                   <p>${u.descripcion}</p>
                 </div>
               `;
-              container.innerHTML += universoHTML;
+              container.innerHTML += universosHTML;
             });
           })
           .catch(err => {
