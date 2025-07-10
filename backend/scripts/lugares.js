@@ -23,7 +23,9 @@ async function getLugaresByOrigen(origen_id) {
     return result.rows;
 }
 
-async function createLugar(nombre, descripcion, origen_id, tipo, imagen) {
+
+async function createLugar(nombre, descripcion, origen_id, tipo, imagen)
+{
     const result = await pool.query(
         'INSERT INTO lugares (nombre, descripcion, origen_id, tipo, imagen) VALUES ($1, $2, $3, $4, $5) RETURNING *',
         [nombre, descripcion, origen_id, tipo, imagen]
@@ -36,10 +38,12 @@ async function deleteLugar(id) {
     return result.rowCount === 0 ? undefined : id;
 }
 
-async function updateLugar(id, nombre, descripcion, origen_id, tipo, imagen) {
+
+async function updateLugar(id, nombre, descripcion, origen_id, tipo, imagen)
+{
     const result = await pool.query(
-        'UPDATE lugares SET nombre = $1, descripcion = $2, origen_id = $3, tipo = $4, imagen = $5 WHERE id = $6 RETURNING *',
-        [nombre, descripcion, origen_id, tipo, imagen, id]  // <- este orden es correcto
+        'UPDATE lugares SET nombre = $1, descripcion = $2, origen_id = $3, tipo = $4,imagen = $5 WHERE id = $6 RETURNING *',
+        [nombre, descripcion, origen_id, tipo, imagen, id]
     );
     return result.rowCount === 0 ? undefined : result.rows[0];
 }

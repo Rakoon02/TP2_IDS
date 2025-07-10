@@ -107,7 +107,7 @@ app.delete('/api/personajes/:id', async (req, res) => {
 
 //Update un personaje
 app.put('/api/personajes/', async (req, res) => {
-    if (!req.body.id || !req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder) {
+    if (!req.body.id || !req.body.nombre || !req.body.origen_id || !req.body.descripcion || !req.body.poder || !req.body.imagen) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
@@ -164,15 +164,24 @@ app.delete('/api/universos/:id', async (req, res) => {
 
 //Update un universo
 app.put('/api/universos/', async (req, res) => {
-    if (!req.body.id || !req.body.nombre || !req.body.creador || !req.body.fecha || !req.body.descripcion || !req.body.imagen) {
+    const { id, nombre, creador, fecha, descripcion, imagen } = req.body;
+
+    if (!id || !nombre || !creador || !fecha || !descripcion || !imagen) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    const universo = await updateUniverso(req.body.id, req.body.nombre, req.body.creador, req.body.fecha, req.body.descripcion, req.body.pais);
-    if (!universo) {
-        return res.status(404).json({ error: 'Universo no encontrado' });
+    try {
+        const universo = await updateUniverso(id, nombre, creador, fecha, descripcion, imagen);
+
+        if (!universo) {
+            return res.status(404).json({ error: 'Universo no encontrado' });
+        }
+
+        res.status(200).json(universo);
+    } catch (error) {
+        console.error("Error al actualizar el universo:", error);
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
-    res.json(universo);
 });
 
 //Get todos los lugares
@@ -222,15 +231,22 @@ app.post('/api/lugares/', async (req, res) => {
 
 //Update un lugar
 app.put('/api/lugares/', async (req, res) => {
-    if (!req.body.id || !req.body.nombre || !req.body.descripcion || !req.body.universo) {
+    const { id, nombre, descripcion, origen_id, tipo, imagen } = req.body;
+
+    if (!id || !nombre || !descripcion || !origen_id || !tipo) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    const lugar = await updateLugar(req.body.id, req.body.nombre, req.body.descripcion, req.body.universo, req.body.imagen);
-    if (!lugar) {
-        return res.status(404).json({ error: 'Lugar no encontrado' });
+    try {
+        const lugar = await updateLugar(id, nombre, descripcion, origen_id, tipo, imagen);
+        if (!lugar) {
+            return res.status(404).json({ error: 'Lugar no encontrado' });
+        }
+        res.json(lugar);
+    } catch (error) {
+        console.error("Error al actualizar lugar:", error);
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
-    res.json(lugar);
 });
 
 app.listen(PORT, () => {
