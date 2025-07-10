@@ -34,36 +34,74 @@
             <br>
             <div class="char_inputs">
                 <h3>*Selecciona la Localización</h3>
-                <select id="characterDropdown">
+                <select id="lugaresDropdown">
                     <option value="">Seleccione una Localización...</option>
                 </select>
                 <br>
                 <h3>
                     *Nombre de la Localización
                 </h3>
-                <input type="text" class="name" maxlength="99">
+                <input type="text" id="name" maxlength="99">
                 <br>
                 <label for="character_universe"><h3>*Universo de la Localización</h3></label>
-                    <select name="criteria" id="universe_character">
-                        <option value="0">Dragon Ball</option>
-                        <option value="1">Naruto</option>
-                        <option value="2">Jujutsu Kaisen</option>
-                        <option value="3">My Hero Academia</option>
+                    <select id="universeDropdown">
+                        <option value="">Seleccione un universo...</option>
                     </select>
                 <br>
                 <h3>
                     *Descripcion de la Localización
                 </h3>
-                <input type="text" class="description" maxlength="254">
+                <input type="text" id="description" maxlength="254">
                 <br>
                 <h3>
-                    Imagen de la Localización
+                    *Tipo de Localización
                 </h3>
-                <input type="text" class="image" maxlength="254">
+                <input type="text" id="tipo" maxlength="254">
+                <br>
+                <h3>
+                    *Imagen de la Localización
+                </h3>
+                <input type="text" id="image" maxlength="254">
             </div>
-            <button onclick="update_char()">
-                Actualizar Información Personaje
+            <button onclick="actualizar_lugar()">
+                Actualizar Información Localización
             </button>
         </div>
+        <script src="actualizar_lugar.js"></script>
+        <script>
+        const lugaresURL = "http://localhost:3000/api/lugares/";
+        const universosURL = "http://localhost:3000/api/universos/";
+
+        window.onload = async function() {
+            try {
+                const lugaresResponse = await fetch(lugaresURL);
+                const lugares = await lugaresResponse.json();
+                const lugaresDropdown = document.getElementById("lugaresDropdown");
+
+                lugares.forEach(l => {
+                    const option = document.createElement("option");
+                    option.value = l.id;
+                    option.textContent = l.nombre;
+                    lugaresDropdown.appendChild(option);
+                });
+
+                const universosResponse = await fetch(universosURL);
+                const universos = await universosResponse.json();
+                const universosDropdown = document.getElementById("universeDropdown");
+
+
+
+                universos.forEach(u => {
+                    const option = document.createElement("option");
+                    option.value = u.id;
+                    option.textContent = u.nombre;
+                    universosDropdown.appendChild(option);
+                });
+
+            } catch (error) {
+                console.error("Error cargando datos:", error);
+            }
+        };
+        </script>
     </body>
 </html>

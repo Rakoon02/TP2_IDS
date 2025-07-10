@@ -408,7 +408,13 @@ body{
     justify-content: space-evenly;
 }
 
-
-
 /*#endregion*/
+
+#imagen-localizacion {
+    width: 100%;             
+    max-width: 500px; 
+    height: auto;            
+    display: block;           
+    margin: 0 auto;           
+}
 

@@ -26,7 +26,7 @@
       <h3>
         *Selecciona el Universo
       </h3>
-      <select id="universoDropdown">
+      <select id="universeDropdown">
         <option value="">Seleccione un universo...</option>
       </select>
       <br>
@@ -49,10 +49,37 @@
         *Descripción
       </h3>
         <input type="text" id="descripcion" maxlength="254" />
+      <h3>
+        *Imagen
+      </h3>
+        <input type="text" id="imagen" maxlength="254" />
     </div>
 
-    <button>Actualizar Universo</button>
+    <button onclick="actualizar_universos()">Actualizar Universo</button>
   </div>
-</body>
+    <script src="actualizar_universos.js"></script>
+    <script>
+    const universosURL = "http://localhost:3000/api/universos/";
+
+    window.onload = async function () {
+            try {
+                const universosResponse = await fetch(universosURL);
+                const universos = await universosResponse.json();
+                const universosDropdown = document.getElementById("universeDropdown");
+
+                universosDropdown.innerHTML = '<option value="">Seleccione un universo...</option>';
+
+                universos.forEach(u => {
+                    const option = document.createElement("option");
+                    option.value = u.id;
+                    option.textContent = u.nombre;
+                    universosDropdown.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error cargando datos:", error);
+            }
+        };
+        </script>
+    </body>
 </html>
 

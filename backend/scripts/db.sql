@@ -22,7 +22,7 @@ CREATE TABLE lugares (
     nombre varchar(100) NOT NULL UNIQUE,
     descripcion varchar(255) NOT NULL,
     origen_id int REFERENCES universos(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    tipo varchar(100),    
+    tipo varchar(100) NOT NULL,    
     imagen varchar(255)
 );
 
