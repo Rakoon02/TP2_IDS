@@ -44,9 +44,9 @@
                 <input type="text" class="nombre" maxlength="99">
                 <br>
                 <label><h3>*Universo del Personaje</h3></label>
-                    <select id="universeDropdown">Seleccione un universo..
+                    <select id="universeDropdown">
                         <option value="">Seleccione un universo...</option>
-                    .<select>
+                    <select>
                 <br>
                 <h3>
                     *Poder del Personaje
@@ -89,7 +89,7 @@
                 const universos = await universosResponse.json();
                 const universosDropdown = document.getElementById("universeDropdown");
 
-                universosDropdown.innerHTML = "";
+
 
                 universos.forEach(u => {
                     const option = document.createElement("option");
