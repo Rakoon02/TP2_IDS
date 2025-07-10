@@ -40,9 +40,9 @@ async function deleteUniverso(id)
     }    
 }
 
-async function updateUniverso(id, nombre, creador, fecha, descripcion, pais)
+async function updateUniverso(id, nombre, creador, fecha, descripcion, imagen)
 {
-    const result = await pool.query('UPDATE universos SET nombre = $1, creador = $2, fecha = $3, descripcion = $4, pais = $5 WHERE id = $6 RETURNING *', [nombre, creador, fecha , descripcion, pais, id]);
+    const result = await pool.query('UPDATE universos SET nombre = $1, creador = $2, fecha = $3, descripcion = $4, imagen = $5 WHERE id = $6 RETURNING *', [nombre, creador, fecha , descripcion, imagen, id]);
     if(result.rowCount === 0)
     {
         return undefined;
